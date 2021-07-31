@@ -7,12 +7,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
 import { LoginComponent } from './auth-components/login/login.component';
 import { RegisterComponent } from './auth-components/register/register.component';
+import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculator/personal-calorie-calculator.component';
+import { WorkoutsComponent } from './workouts/workouts.component';
+import { DietsComponent } from './diets/diets.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    PersonalCalorieCalculatorComponent,
+    WorkoutsComponent,
+    DietsComponent
   ],
   imports: [
     BrowserModule,
