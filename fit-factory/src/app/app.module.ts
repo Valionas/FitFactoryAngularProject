@@ -19,6 +19,7 @@ import { DietsComponent } from './diets/diets.component';
 import { environment } from 'src/environments/environment';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 import { HomeComponent } from './home/home.component';
+import { NavbarComponent } from './home/navigation/navbar/navbar.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { HomeComponent } from './home/home.component';
     PersonalCalorieCalculatorComponent,
     WorkoutsComponent,
     DietsComponent,
-    HomeComponent
+    HomeComponent,
+    NavbarComponent
   ],
   imports: [
     BrowserModule,
