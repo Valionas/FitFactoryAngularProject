@@ -1,15 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
+
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.css']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent  {
 
-  constructor() { }
+  @Output() isAuthenticated = new EventEmitter();
 
-  ngOnInit(): void {
+  constructor(public firebaseAuthService:FirebaseAuthService) { }
+
+  async onSignUp(email:string,password:string){
+    await this.firebaseAuthService.signUp(email,password);
+    if(this.firebaseAuthService.isLoggedIn){
+      this.isAuthenticated.emit();
+    }
   }
-
 }

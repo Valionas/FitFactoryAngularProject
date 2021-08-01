@@ -17,6 +17,8 @@ import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculato
 import { WorkoutsComponent } from './workouts/workouts.component';
 import { DietsComponent } from './diets/diets.component';
 import { environment } from 'src/environments/environment';
+import { FirebaseAuthService } from './services/firebase-auth.service';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,8 @@ import { environment } from 'src/environments/environment';
     RegisterComponent,
     PersonalCalorieCalculatorComponent,
     WorkoutsComponent,
-    DietsComponent
+    DietsComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,7 @@ import { environment } from 'src/environments/environment';
     BrowserAnimationsModule,
     MatSliderModule,
   ],
-  providers: [],
+  providers: [FirebaseAuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

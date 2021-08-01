@@ -1,3 +1,9 @@
-<mat-slider min="1" max="100" step="1" value="1"></mat-slider>
-<app-login></app-login>
-<app-register></app-register>
+<div *ngIf="!isSignedIn">
+    <app-login (isAuthenticated)="setAuthentication(true)"></app-login>
+</div>
+<div *ngIf="!isSignedIn">
+    <app-register (isAuthenticated)="setAuthentication(true)"></app-register>
+</div>
+<div *ngIf="isSignedIn">
+    <app-home (isAuthenticated)="setAuthentication(false)"></app-home>
+</div>

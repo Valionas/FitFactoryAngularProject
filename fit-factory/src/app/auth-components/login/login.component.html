@@ -1,1 +1,6 @@
-<p>login works!</p>
+<div>
+    <h2>Sign in</h2>
+    <input type="text" #emailSignIn>
+    <input type="text" #passwordSignIn>
+    <button (click)="onSignIn(emailSignIn.value,passwordSignIn.value)">Sign In</button>
+</div>
