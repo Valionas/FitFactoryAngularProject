@@ -6,17 +6,17 @@ import { FirebaseAuthService } from '../services/firebase-auth.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent  {
 
   @Output() isAuthenticated = new EventEmitter();
 
   constructor(public firebaseAuthService:FirebaseAuthService) { }
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+ 
 
-  logout(){
-    this.firebaseAuthService.logout();
-    this.isAuthenticated.emit();
+  async logout(){
+    await this.firebaseAuthService.logout();
+    if(this.firebaseAuthService.isLoggedIn === false){
+      this.isAuthenticated.emit();
+    }
   }
 }

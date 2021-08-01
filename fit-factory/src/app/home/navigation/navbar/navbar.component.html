@@ -1,1 +1,18 @@
-<p>navbar works!</p>
+<mat-toolbar color="primary">
+    <img src="https://pngimage.net/wp-content/uploads/2018/06/sports-logo-png-5.png" alt="" width="60px" height="60px" style="margin-right:10px">
+    <span>Fit-Factory</span>
+
+    <div class="spacer"></div>
+    <div *ngIf="this.firebaseAuthService.isLoggedIn">
+        <a mat-button>Home</a>
+        <a mat-button>Diets</a>
+        <a mat-button>Recipes</a>
+        <a mat-button>Workouts</a>
+        <a mat-button>Calorie Calculator</a>
+        <a mat-button >Logout</a>
+    </div>
+    <div *ngIf="!this.firebaseAuthService.isLoggedIn">
+        <a mat-button>Login</a>
+        <a mat-button>Register</a>
+    </div>
+</mat-toolbar>

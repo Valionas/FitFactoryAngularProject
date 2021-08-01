@@ -27,6 +27,7 @@ export class FirebaseAuthService {
 
   logout(){
     this.firebaseAuth.signOut()
+    this.isLoggedIn = false;
     localStorage.clear();
   }
 }

@@ -7,15 +7,15 @@ import { FirebaseAuthService } from './services/firebase-auth.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit{
-  
+export class AppComponent implements OnInit {
+
   title = 'fit-factory';
   isSignedIn = false;
   authFormType = "";
 
-  constructor(public firebaseService: FirebaseAuthService){}
+  constructor(public firebaseService: FirebaseAuthService) { }
   ngOnInit(): void {
-    if(localStorage.getItem('user') !== null){
+    if (localStorage.getItem('user') !== null) {
       this.isSignedIn = true;
     }
     else {
@@ -23,14 +23,22 @@ export class AppComponent implements OnInit{
     }
   }
 
-  setAuthentication(isAuthenticated: boolean){
+  ngOnChanges(): void {
+    if (localStorage.getItem('user') !== null) {
+      this.isSignedIn = true;
+    } else {
+      this.isSignedIn = false;
+    }
+  }
+  
+  setAuthentication(isAuthenticated: boolean) {
     this.isSignedIn = isAuthenticated;
   }
 
-  setAuthFormHandler(formType: string){
-    if(formType === "login"){
+  setAuthFormHandler(formType: string) {
+    if (formType === "login") {
       this.authFormType = "login";
-    }else{
+    } else {
       this.authFormType = "register";
     }
   }

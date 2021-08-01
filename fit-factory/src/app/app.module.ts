@@ -10,6 +10,8 @@ import { AngularFireAuth, AngularFireAuthModule } from '@angular/fire/auth';
 //Material UI
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSliderModule } from '@angular/material/slider';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
 //App Components
 import { LoginComponent } from './auth-components/login/login.component';
 import { RegisterComponent } from './auth-components/register/register.component';
@@ -40,7 +42,8 @@ import { NavbarComponent } from './home/navigation/navbar/navbar.component';
     AngularFireAuthModule,
     AngularFireStorageModule,
     BrowserAnimationsModule,
-    MatSliderModule,
+    MatToolbarModule,
+    MatButtonModule,
   ],
   providers: [FirebaseAuthService],
   bootstrap: [AppComponent]
