@@ -1,6 +1,6 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -9,15 +9,13 @@ import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 })
 export class LoginComponent  {
 
-  @Output() isAuthenticated = new EventEmitter();
-
-  constructor(public firebaseAuthService:FirebaseAuthService) { }
+  constructor(
+    public firebaseAuthService:FirebaseAuthService,
+    private router: Router) { }
 
   async onSignIn(email:string,password:string){
     await this.firebaseAuthService.signIn(email,password);
-    if(this.firebaseAuthService.isLoggedIn){
-      this.isAuthenticated.emit();
-    }
+    this.router.navigate(['/home']);
   }
 
 }

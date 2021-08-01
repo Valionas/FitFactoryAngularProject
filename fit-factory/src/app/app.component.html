@@ -1,6 +1,7 @@
-<app-navbar></app-navbar>
+<app-navbar ></app-navbar>
 <div class="page-container">
-    <div *ngIf="!isSignedIn">
+    <router-outlet></router-outlet>
+    <!-- <div *ngIf="!isSignedIn">
         <div *ngIf="authFormType==''">
             <button (click)="setAuthFormHandler('login')">Log In</button>
             <button (click)="setAuthFormHandler('register')">Register</button>
@@ -14,5 +15,5 @@
     </div>
     <div *ngIf="isSignedIn">
         <app-home (isAuthenticated)="setAuthentication(false)"></app-home>
-    </div>
+    </div> -->
 </div>
