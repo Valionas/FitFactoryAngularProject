@@ -1,8 +1,14 @@
 <div *ngIf="!isSignedIn">
-    <app-login (isAuthenticated)="setAuthentication(true)"></app-login>
-</div>
-<div *ngIf="!isSignedIn">
-    <app-register (isAuthenticated)="setAuthentication(true)"></app-register>
+    <div>
+        <button (click)="setAuthFormHandler('login')">Log In</button>
+        <button (click)="setAuthFormHandler('register')">Register</button>
+    </div>
+    <div *ngIf="authFormType=='login'">
+        <app-login (isAuthenticated)="setAuthentication(true)"></app-login>
+    </div>
+    <div *ngIf="authFormType=='register'">
+        <app-register (isAuthenticated)="setAuthentication(true)"></app-register>
+    </div>
 </div>
 <div *ngIf="isSignedIn">
     <app-home (isAuthenticated)="setAuthentication(false)"></app-home>

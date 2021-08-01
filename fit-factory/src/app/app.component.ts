@@ -11,6 +11,7 @@ export class AppComponent implements OnInit{
   
   title = 'fit-factory';
   isSignedIn = false;
+  authFormType = "";
 
   constructor(public firebaseService: FirebaseAuthService){}
   ngOnInit(): void {
@@ -24,5 +25,13 @@ export class AppComponent implements OnInit{
 
   setAuthentication(isAuthenticated: boolean){
     this.isSignedIn = isAuthenticated;
+  }
+
+  setAuthFormHandler(formType: string){
+    if(formType === "login"){
+      this.authFormType = "login";
+    }else{
+      this.authFormType = "register";
+    }
   }
 }
