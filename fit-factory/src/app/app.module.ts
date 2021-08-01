@@ -22,6 +22,7 @@ import { environment } from 'src/environments/environment';
 import { FirebaseAuthService } from './services/firebase-auth.service';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './home/navigation/navbar/navbar.component';
+import { AuthenticateGuard } from './guards/auth.activate';
 
 @NgModule({
   declarations: [
@@ -45,7 +46,7 @@ import { NavbarComponent } from './home/navigation/navbar/navbar.component';
     MatToolbarModule,
     MatButtonModule,
   ],
-  providers: [FirebaseAuthService],
+  providers: [FirebaseAuthService, AuthenticateGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

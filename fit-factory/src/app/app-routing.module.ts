@@ -3,6 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth-components/login/login.component';
 import { RegisterComponent } from './auth-components/register/register.component';
 import { DietsComponent } from './diets/diets.component';
+import { AuthenticateGuard } from './guards/auth.activate';
 import { HomeComponent } from './home/home.component';
 import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculator/personal-calorie-calculator.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
@@ -15,27 +16,60 @@ const routes: Routes = [
   },
   {
     path: 'home',
-    component: HomeComponent
+    component: HomeComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login',
+    }
   },
   {
     path: 'login',
-    component: LoginComponent
+    component: LoginComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: false,
+      onFailRedirect: '/home',
+
+    }
   },
   {
     path: 'register',
-    component: RegisterComponent
+    component: RegisterComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: false,
+      onFailRedirect: '/home',
+
+    }
   },
   {
     path: 'diets',
-    component: DietsComponent
+    component: DietsComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login',
+
+    }
   },
   {
     path: 'workouts',
-    component: WorkoutsComponent
+    component: WorkoutsComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login',
+    }
   },
   {
     path: 'calculator',
-    component: PersonalCalorieCalculatorComponent
+    component: PersonalCalorieCalculatorComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login',
+    }
   }
 ];
 
