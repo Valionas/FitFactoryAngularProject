@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { DietCrudService } from '../services/diet-crud.service';
 
 @Component({
   selector: 'app-diets',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DietsComponent implements OnInit {
 
-  constructor() { }
+  public dietsList: any[] = [];
+  constructor(private dietService:DietCrudService) { }
 
   ngOnInit(): void {
+    this.getDiets();
+  }
+
+  getDiets():void{
+    this.dietService.getDiets().subscribe((res) => {
+      this.dietsList = [];
+      res.map((diet) => {
+        console.log(diet.payload.doc.data());
+        
+        this.dietsList.push(diet.payload.doc.data());
+      })
+    })
   }
 
 }
