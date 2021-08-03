@@ -8,18 +8,19 @@
                     <th>Duration</th>
                     <th>Level</th>
                     <th>Description</th>
-                    <th>Actions</th>
                 </tr>
                     <tr *ngFor="let diet of dietsList">
                         <td>{{diet.data.title}}</td>
                         <td>{{diet.data.duration}}</td>
                         <td>{{diet.data.level}}</td>
-                        <td>{{diet.data.description}}</td>
+                        <td>{{diet.data.description}}</td>         
                         <td>
                             <button>Preview</button>
-                            <hr>
+                        </td>
+                        <td *ngIf="diet.data.createdBy==currentUser">
                             <button>Edit</button>
-                            <hr>
+                        </td>
+                        <td *ngIf="diet.data.createdBy==currentUser">
                             <button (click)="deleteDiet(diet.id)">Delete</button>
                         </td>
                     </tr>

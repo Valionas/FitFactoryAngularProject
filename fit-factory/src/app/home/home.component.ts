@@ -6,11 +6,14 @@ import { Router } from '@angular/router';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css','../animation.css']
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
 
   constructor(
     public firebaseAuthService: FirebaseAuthService,
     private router: Router) { }
+  ngOnInit(): void {
+    this.firebaseAuthService.getUserId();
+  }
 
 
 

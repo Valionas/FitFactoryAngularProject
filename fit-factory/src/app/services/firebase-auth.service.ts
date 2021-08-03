@@ -10,6 +10,12 @@ export class FirebaseAuthService {
 
   constructor(public firebaseAuth: AngularFireAuth) { }
 
+  async getUserId(){
+    await this.firebaseAuth.user.subscribe((response)=>{
+      localStorage.setItem('userID',response!.uid)
+    })
+  }
+
   async signIn(email: string, password: string){
     await this.firebaseAuth.signInWithEmailAndPassword(email,password)
     .then(response => {
