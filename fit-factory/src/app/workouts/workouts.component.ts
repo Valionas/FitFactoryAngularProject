@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-workouts',
   templateUrl: './workouts.component.html',
-  styleUrls: ['./workouts.component.css']
+  styleUrls: ['./workouts.component.css','../animation.css']
 })
 export class WorkoutsComponent implements OnInit {
 

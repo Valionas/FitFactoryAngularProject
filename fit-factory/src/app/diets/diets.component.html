@@ -2,29 +2,38 @@
     <h1>Diets</h1>
     <div class="container">
         <div class="row">
-            <table>
-                <tr>
-                    <th>Title</th>
-                    <th>Duration</th>
-                    <th>Level</th>
-                    <th>Description</th>
-                </tr>
-                    <tr *ngFor="let diet of dietsList">
-                        <td>{{diet.data.title}}</td>
-                        <td>{{diet.data.duration}}</td>
-                        <td>{{diet.data.level}}</td>
-                        <td>{{diet.data.description}}</td>         
-                        <td>
-                            <button>Preview</button>
-                        </td>
-                        <td *ngIf="diet.data.createdBy==currentUser">
-                            <button>Edit</button>
-                        </td>
-                        <td *ngIf="diet.data.createdBy==currentUser">
-                            <button (click)="deleteDiet(diet.id)">Delete</button>
-                        </td>
-                    </tr>
-            </table>
+                    <div *ngFor="let diet of dietsList">
+                        <div class="diet-container">
+                            <h2>{{diet.data.title}}</h2>
+                            <p>Duration: {{diet.data.duration}} Level: {{diet.data.level}}</p>
+                            <p>{{diet.data.description}}</p>
+                            <div *ngIf="diet.data.breakfast&&diet.data.lunch&&diet.data.dinner">
+
+                                <div *ngIf="diet.data.breakfast.length!=0" >
+                                    <h2>Breakfast</h2>
+                                    <ul *ngFor="let item of diet.data.breakfast">
+                                        <li><p>{{item}}</p></li>
+                                    </ul>
+                                </div>
+                                <div *ngIf="diet.data.lunch.length!=0" >
+                                    <h2>Lunch</h2>
+                                    <ul *ngFor="let item of diet.data.lunch">
+                                        <li><p>{{item}}</p></li>
+                                    </ul>
+                                </div>
+                                 <div *ngIf="diet.data.dinner.length!=0" >
+                                    <h2>Dinner</h2>
+                                    <ul *ngFor="let item of diet.data.dinner">
+                                        <li><p>{{item}}</p></li>
+                                    </ul>
+                                </div>
+                            </div>         
+                            <div *ngIf="diet.data.createdBy==currentUser">
+                                <button>Edit</button>
+                                <button (click)="deleteDiet(diet.id)">Delete</button>
+                            </div>
+                        </div>
+                    </div>
         </div>
     </div>
 </div>

@@ -14,11 +14,24 @@ h2{
     color:white;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+    
 }
 .container{
     background-color: rgba(0,0,0,.5);
     color:white;
     border-radius:1%;
     text-align: justify;
-    padding:0% 10%;
+    padding:5%;
+}
+p{
+    color:white;
+}
+.diet-container{
+    margin-bottom:15%;
+    text-align: center;
+    border:1px solid white;
+    padding:2%;
+}
+ul{
+    list-style-type:circle;
 }

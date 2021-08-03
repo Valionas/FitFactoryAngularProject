@@ -5,7 +5,7 @@ import { FirebaseAuthService } from './services/firebase-auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css','./animation.css']
 })
 export class AppComponent implements OnInit {
 
