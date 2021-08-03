@@ -1,9 +1,13 @@
-<h1>HELO WORLD</h1>
-<div *ngFor="let diet of dietsList">
-    <div>
-        {{diet.title}}
-    </div>
-    <div>
-        {{diet.description}}
+<h1>Diets</h1>
+<div class="container">
+    <div class="row">
+        <div *ngFor="let diet of dietsList">
+            <div>
+                {{diet.title}}
+            </div>
+            <div>
+                {{diet.description}}
+            </div>
+        </div>     
     </div>
 </div>

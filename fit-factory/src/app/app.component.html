@@ -1,19 +1,4 @@
 <app-navbar ></app-navbar>
 <div class="page-container">
-    <router-outlet></router-outlet>
-    <!-- <div *ngIf="!isSignedIn">
-        <div *ngIf="authFormType==''">
-            <button (click)="setAuthFormHandler('login')">Log In</button>
-            <button (click)="setAuthFormHandler('register')">Register</button>
-        </div>
-        <div *ngIf="authFormType=='login'">
-            <app-login (isAuthenticated)="setAuthentication(true)"></app-login>
-        </div>
-        <div *ngIf="authFormType=='register'">
-            <app-register (isAuthenticated)="setAuthentication(true)"></app-register>
-        </div>
-    </div>
-    <div *ngIf="isSignedIn">
-        <app-home (isAuthenticated)="setAuthentication(false)"></app-home>
-    </div> -->
+    <router-outlet ></router-outlet>
 </div>

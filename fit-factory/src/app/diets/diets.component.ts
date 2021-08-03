@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DietCrudService } from '../services/diet-crud.service';
+import { CRUDService } from '../services/crud-service';
 
 @Component({
   selector: 'app-diets',
@@ -9,14 +9,14 @@ import { DietCrudService } from '../services/diet-crud.service';
 export class DietsComponent implements OnInit {
 
   public dietsList: any[] = [];
-  constructor(private dietService:DietCrudService) { }
+  constructor(private dietService:CRUDService) { }
 
   ngOnInit(): void {
     this.getDiets();
   }
 
   getDiets():void{
-    this.dietService.getDiets().subscribe((res) => {
+    this.dietService.getItems('diets').subscribe((res) => {
       this.dietsList = [];
       res.map((diet) => {
         console.log(diet.payload.doc.data());

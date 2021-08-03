@@ -1,7 +1,14 @@
 .page-container{
-    display:flex;
-    flex-direction: column;
-    align-items: center;
-    background-color:white;
-    margin-top:1%;
+    width:60%;
+    background-color: white;
+    min-height:100vh;
+    margin-top:3%;
+    margin-left:20%;
+    border-radius:15px;
+}
+body{
+    background-color: black;
+}
+h1{
+    text-align: center;
 }

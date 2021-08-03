@@ -23,7 +23,7 @@ import { FirebaseAuthService } from './services/firebase-auth.service';
 import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './home/navigation/navbar/navbar.component';
 import { AuthenticateGuard } from './guards/auth.activate';
-import { DietCrudService } from './services/diet-crud.service';
+import { CRUDService } from './services/crud-service';
 
 @NgModule({
   declarations: [
@@ -47,7 +47,7 @@ import { DietCrudService } from './services/diet-crud.service';
     MatToolbarModule,
     MatButtonModule,
   ],
-  providers: [FirebaseAuthService, AuthenticateGuard, DietCrudService],
+  providers: [FirebaseAuthService, AuthenticateGuard, CRUDService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
