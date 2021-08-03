@@ -1,13 +1,19 @@
 <h1>Diets</h1>
 <div class="container">
     <div class="row">
-        <div *ngFor="let diet of dietsList">
-            <div>
-                {{diet.title}}
-            </div>
-            <div>
-                {{diet.description}}
-            </div>
-        </div>     
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Duration</th>
+                <th>Level</th>
+                <th>Description</th>
+            </tr>
+                <tr *ngFor="let diet of dietsList">
+                    <td>{{diet.title}}</td>
+                    <td>{{diet.duration}}</td>
+                    <td>{{diet.level}}</td>
+                    <td>{{diet.description}}</td>
+                </tr>
+        </table>
     </div>
 </div>
