@@ -7,12 +7,20 @@
                 <th>Duration</th>
                 <th>Level</th>
                 <th>Description</th>
+                <th>Actions</th>
             </tr>
                 <tr *ngFor="let diet of dietsList">
-                    <td>{{diet.title}}</td>
-                    <td>{{diet.duration}}</td>
-                    <td>{{diet.level}}</td>
-                    <td>{{diet.description}}</td>
+                    <td>{{diet.data.title}}</td>
+                    <td>{{diet.data.duration}}</td>
+                    <td>{{diet.data.level}}</td>
+                    <td>{{diet.data.description}}</td>
+                    <td>
+                        <button>Preview</button>
+                        <hr>
+                        <button>Edit</button>
+                        <hr>
+                        <button (click)="deleteDiet(diet.id)">Delete</button>
+                    </td>
                 </tr>
         </table>
     </div>

@@ -19,11 +19,13 @@ export class DietsComponent implements OnInit {
     this.dietService.getItems('diets').subscribe((res) => {
       this.dietsList = [];
       res.map((diet) => {
-        console.log(diet.payload.doc.data());
-        
-        this.dietsList.push(diet.payload.doc.data());
+        this.dietsList.push({id: diet.payload.doc.id, data:diet.payload.doc.data()});
       })
     })
+  }
+
+  deleteDiet(dietId:string):void{
+    this.dietService.deleteItem('diets',dietId).then();
   }
 
 }
