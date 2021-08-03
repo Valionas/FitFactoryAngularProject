@@ -4,7 +4,7 @@ import { CRUDService } from '../services/crud-service';
 @Component({
   selector: 'app-diets',
   templateUrl: './diets.component.html',
-  styleUrls: ['./diets.component.css']
+  styleUrls: ['./diets.component.css','../animation.css']
 })
 export class DietsComponent implements OnInit {
 

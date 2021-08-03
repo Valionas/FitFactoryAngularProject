@@ -1,0 +1,17 @@
+h1{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:45px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+h2{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:25px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
