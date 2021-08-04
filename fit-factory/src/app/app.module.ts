@@ -23,7 +23,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarComponent } from './home/navigation/navbar/navbar.component';
 import { AuthenticateGuard } from './guards/auth.activate';
 import { CRUDService } from './services/crud-service';
-
+import { FormsModule } from '@angular/forms';
 @NgModule({
   declarations: [
     AppComponent, 
@@ -37,6 +37,7 @@ import { CRUDService } from './services/crud-service';
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     AppRoutingModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule,

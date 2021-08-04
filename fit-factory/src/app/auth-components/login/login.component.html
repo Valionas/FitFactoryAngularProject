@@ -1,8 +1,33 @@
 <div class="page-container animated fadeIn">
-    <div>
-        <h2>Sign in</h2>
-        <input type="text" #emailSignIn>
-        <input type="text" #passwordSignIn>
-        <button (click)="onSignIn(emailSignIn.value,passwordSignIn.value)">Sign In</button>
+    <div class="form">
+        <form #form="ngForm">]
+            <div class="title">Welcome</div>
+            <div class="subtitle">Enter the Fit-Factory</div>
+            <div class="input-container ic1">
+                <input type="text" id="emailSignin" name="emailSignIn" #emailSignIn="ngModel" class="input" ngModel
+                    required email placeholder=" ">
+                <p *ngIf="emailSignIn.touched && emailSignIn.errors?.required" class="showError animated zoomIn">
+                    Email is required!
+                </p>
+                <p *ngIf="emailSignIn.touched && emailSignIn.errors?.email" class="showError animated zoomIn">
+                    Email is not valid!
+                </p>
+                <div class="cut"></div>
+                <label for="emailSignIn" class="placeholder">Email:</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="password" id="passwordSignIn" name="passwordSignIn" class="input" #passwordSignIn="ngModel"
+                    ngModel required minlength="6" placeholder=" ">
+                <p *ngIf="passwordSignIn.touched && passwordSignIn.errors?.required" class="showError animated zoomIn">
+                    Password is required!
+                </p>
+                <p *ngIf="passwordSignIn.touched && passwordSignIn.errors?.minlength" class="showError animated zoomIn">
+                    Password must be atleast 6 symbols!
+                </p>
+                <div class="cut"></div>
+                <label for="passwordSignIn" class="placeholder">Password:</label>
+            </div>
+            <button class="submit" (click)="onSignIn(emailSignIn.value,passwordSignIn.value)">Sign In</button>
+        </form>
     </div>
 </div>

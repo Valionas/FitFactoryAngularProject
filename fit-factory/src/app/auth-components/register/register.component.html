@@ -1,8 +1,34 @@
 <div class="page-container animated fadeIn">
-    <div>
-        <h2>Sign up</h2>
-        <input type="text" #emailSignUp>
-        <input type="text" #passwordSignUp>
-        <button (click)="onSignUp(emailSignUp.value,passwordSignUp.value)">Sign Up</button>
+    <div class="form">
+        <form #form="ngForm">]
+            <div class="title">Sign Up</div>
+            <div class="subtitle">and</div>
+            <div class="subtitle">join the Fit-Factory!</div>
+            <div class="input-container ic1">
+                <input type="text" id="emailSignUp" name="emailSignUp" #emailSignUp="ngModel" class="input" ngModel
+                    required email placeholder=" ">
+                <p *ngIf="emailSignUp.touched && emailSignUp.errors?.required" class="showError animated zoomIn">
+                    Email is required!
+                </p>
+                <p *ngIf="emailSignUp.touched && emailSignUp.errors?.email" class="showError animated zoomIn">
+                    Email is not valid!
+                </p>
+                <div class="cut"></div>
+                <label for="emailSignUp" class="placeholder">Email:</label>
+            </div>
+            <div class="input-container ic1">
+                <input type="password" id="passwordSignUp" name="passwordSignUp" class="input" #passwordSignUp="ngModel"
+                    ngModel required minlength="6" placeholder=" ">
+                <p *ngIf="passwordSignUp.touched && passwordSignUp.errors?.required" class="showError animated zoomIn">
+                    Password is required!
+                </p>
+                <p *ngIf="passwordSignUp.touched && passwordSignUp.errors?.minlength" class="showError animated zoomIn">
+                    Password must be atleast 6 symbols!
+                </p>
+                <div class="cut"></div>
+                <label for="passwordSignUp" class="placeholder">Password:</label>
+            </div>
+            <button class="submit" (click)="onSignUp(emailSignUp.value,passwordSignUp.value)">Sign In</button>
+        </form>
     </div>
 </div>
