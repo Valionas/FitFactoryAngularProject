@@ -8,25 +8,40 @@
                             <p>Duration: {{diet.data.duration}} Level: {{diet.data.level}}</p>
                             <p>{{diet.data.description}}</p>
                             <div *ngIf="diet.data.breakfast&&diet.data.lunch&&diet.data.dinner">
-
-                                <div *ngIf="diet.data.breakfast.length!=0" >
-                                    <h2>Breakfast</h2>
-                                    <ul *ngFor="let item of diet.data.breakfast">
-                                        <li><p>{{item}}</p></li>
-                                    </ul>
-                                </div>
-                                <div *ngIf="diet.data.lunch.length!=0" >
-                                    <h2>Lunch</h2>
-                                    <ul *ngFor="let item of diet.data.lunch">
-                                        <li><p>{{item}}</p></li>
-                                    </ul>
-                                </div>
-                                 <div *ngIf="diet.data.dinner.length!=0" >
-                                    <h2>Dinner</h2>
-                                    <ul *ngFor="let item of diet.data.dinner">
-                                        <li><p>{{item}}</p></li>
-                                    </ul>
-                                </div>
+                                <table>
+                                    <tr>
+                                        <th>
+                                            <h2 class="meal-heading">Breakfast</h2>
+                                        </th>
+                                        <th>
+                                            <h2 class="meal-heading">Lunch</h2>
+                                        </th>
+                                        <th>
+                                            <h2 class="meal-heading">Dinner</h2>
+                                        </th>
+                                    </tr>
+                                    <td>
+                                        <div *ngIf="diet.data.breakfast.length!=0" >
+                                            <ul *ngFor="let item of diet.data.breakfast">
+                                                <li><p>{{item}}</p></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="diet.data.lunch.length!=0" >
+                                            <ul *ngFor="let item of diet.data.lunch">
+                                                <li><p>{{item}}</p></li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <div *ngIf="diet.data.dinner.length!=0" >
+                                           <ul *ngFor="let item of diet.data.dinner">
+                                               <li><p>{{item}}</p></li>
+                                           </ul>
+                                       </div>
+                                    </td>
+                                </table>
                             </div>         
                             <div *ngIf="diet.data.createdBy==currentUser">
                                 <button>Edit</button>
