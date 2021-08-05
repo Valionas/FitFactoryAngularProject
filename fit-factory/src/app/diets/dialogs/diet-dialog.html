@@ -19,5 +19,6 @@
 </form>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button mat-button [mat-dialog-close]="form.valid" cdkFocusInitial>Submit</button>
+  <button *ngIf="!form.valid" mat-button  cdkFocusInitial>Submit</button>
+  <button *ngIf="form.valid" mat-button [mat-dialog-close]="form.valid" cdkFocusInitial>Submit</button>
 </mat-dialog-actions>

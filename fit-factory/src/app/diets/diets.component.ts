@@ -55,12 +55,13 @@ export class DietsComponent implements OnInit {
 
   openDietDialog() {
     const dialogRef = this.dialog.open(AddDietDialog);
-
+    dialogRef.disableClose = true;
     dialogRef.afterClosed().subscribe(result => {
       if(result){
+        Swal.fire('Success!','Your diet has been created','success');
         console.log(result.value);     
       }else{
-        Swal.fire('GO');
+        Swal.fire();
       }
     });
 
