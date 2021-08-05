@@ -4,8 +4,9 @@ body {
     margin: 0;
     font-family: Roboto, "Helvetica Neue", sans-serif; 
     background:url("https://www.alexfit.net/wp-content/uploads/2014/08/tags-boys-fedor-shmidt-fit-girls-fitness-model-fittness-sports-women-wallpaper-3bef9e4268bb3b6bbcc8e78e7e997fed-large-1423871.jpg");
-	background-position:fixed;
+	background-position:center center;
     background-size:cover;
 	background-repeat:no-repeat;
+    background-attachment: fixed;
     background-color: black;
 }
