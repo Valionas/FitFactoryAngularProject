@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CRUDService } from '../services/crud-service';
 import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { MatDialog } from '@angular/material/dialog';
-
+import Swal from 'sweetalert2/dist/sweetalert2.js';
 interface DietLevels {
   value: string;
   viewValue: string;
@@ -34,8 +34,23 @@ export class DietsComponent implements OnInit {
   }
 
   deleteDiet(dietId: string): void {
-    
-    this.dietService.deleteItem('diets', dietId).then();
+    Swal.fire({  
+      title: 'Are you sure want to remove?',  
+      text: 'You will not be able to recover this diet!',  
+      icon: 'warning',  
+      showCancelButton: true,  
+      confirmButtonText: 'Yes, delete it!',  
+      cancelButtonText: 'No, keep it'  
+    }).then((result) => {  
+      if (result.value) {  
+        Swal.fire(  
+          'Deleted!',  
+          'Your diet has been deleted.',  
+          'success'  
+        )  
+        this.dietService.deleteItem('diets', dietId).then();
+      } 
+    })  
   }
 
   openDietDialog() {
@@ -44,6 +59,8 @@ export class DietsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if(result){
         console.log(result.value);     
+      }else{
+        Swal.fire('GO');
       }
     });
 
