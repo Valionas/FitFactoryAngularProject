@@ -8,7 +8,7 @@
         <a mat-button routerLink="/diets">Diets</a>
         <a mat-button routerLink="/workouts">Workouts</a>
         <a mat-button routerLink="/calculator">Calorie Calculator</a>
-        <a mat-button (click)="logout()" >Logout</a>
+        <a mat-button (click)="logoutHandler()" >Logout</a>
     </div>
     <div *ngIf="!this.firebaseAuthService.isLoggedIn">
         <a mat-button routerLink="/login">Login</a>

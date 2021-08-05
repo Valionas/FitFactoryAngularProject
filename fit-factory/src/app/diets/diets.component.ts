@@ -60,8 +60,6 @@ export class DietsComponent implements OnInit {
       if(result){
         Swal.fire('Success!','Your diet has been created','success');
         console.log(result.value);     
-      }else{
-        Swal.fire();
       }
     });
 
@@ -80,8 +78,4 @@ export class AddDietDialog {
     {value: 'Intermediate', viewValue: 'Fit-Commander'}
   ];
 
-  onSubmit(){
-    
-  }
-  
 }
