@@ -1,0 +1,23 @@
+<h2 style="color: black;">What will be your next diet?</h2>
+<form #form="ngForm">
+  <input type="text" #title="ngModel" ngModel name="title" required placeholder="Diet Title...">
+  <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Diet description..."></textarea>
+  <mat-form-field appearance="fill" >
+    <mat-label>Diet Level</mat-label>
+    <mat-select #level="ngModel" ngModel name="level">
+      <mat-option *ngFor="let level of dietLevels" [value]="level.value">
+        {{level.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h3>Breakfast meals:</h3>
+  <input type="text">
+  <h3>Lunch meals</h3>
+  <input type="text">
+  <h3>Dinner meals</h3>
+  <input type="text">
+</form>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button mat-button [mat-dialog-close]="form.valid" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>

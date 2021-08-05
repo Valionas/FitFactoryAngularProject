@@ -38,3 +38,21 @@ ul{
 .meal-heading{
     text-align: left;
 }
+.dietDialog {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    outline: 0;
+    margin-left:37%;
+    width: 25%;
+}
+
+textarea{
+    resize: none;
+}
