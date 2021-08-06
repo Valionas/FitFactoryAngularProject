@@ -15,3 +15,10 @@ h2{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
+.container{
+    background-color: rgba(0,0,0,.5);
+    color:white;
+    border-radius:1%;
+    text-align: justify;
+    padding:5%;
+}

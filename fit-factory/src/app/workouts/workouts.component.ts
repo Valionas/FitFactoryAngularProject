@@ -33,14 +33,14 @@ export class WorkoutsComponent implements OnInit {
 
   public currentUser = localStorage.getItem('userID');
   public workoutsList: any[] = [];
-  constructor(private dietService: CRUDService, private fireAuth: FirebaseAuthService, public dialog: MatDialog) { }
+  constructor(private workoutService: CRUDService, private fireAuth: FirebaseAuthService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getDiets();
   }
 
   getDiets(): void {
-    this.dietService.getItems('workouts').subscribe((res) => {
+    this.workoutService.getItems('workouts').subscribe((res) => {
       this.workoutsList = [];
       res.map((diet) => {
         this.workoutsList.push({ id: diet.payload.doc.id, data: diet.payload.doc.data() });
@@ -48,7 +48,7 @@ export class WorkoutsComponent implements OnInit {
     })
   }
 
-  deleteWorkout(dietId: string): void {
+  deleteWorkout(workoutId: string): void {
     Swal.fire({  
       title: 'Are you sure want to remove?',  
       text: 'Keep in mind you might need this workout!',  
@@ -63,7 +63,7 @@ export class WorkoutsComponent implements OnInit {
           'Your training plan has been deleted.',  
           'success'  
         )  
-        this.dietService.deleteItem('workouts', dietId).then();
+        this.workoutService.deleteItem('workouts', workoutId).then();
       } 
     })  
   }
