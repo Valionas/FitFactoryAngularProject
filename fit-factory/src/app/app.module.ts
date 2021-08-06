@@ -20,7 +20,7 @@ import {MatSelectModule} from '@angular/material/select';
 import { LoginComponent } from './auth-components/login/login.component';
 import { RegisterComponent } from './auth-components/register/register.component';
 import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculator/personal-calorie-calculator.component';
-import { WorkoutsComponent } from './workouts/workouts.component';
+import { AddWorkoutDialog, WorkoutsComponent } from './workouts/workouts.component';
 import { AddDietDialog, DietsComponent } from './diets/diets.component';
 import { environment } from 'src/environments/environment';
 import { FirebaseAuthService } from './services/firebase-auth.service';
@@ -40,7 +40,7 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NavbarComponent,
     AddDietDialog,
-    
+    AddWorkoutDialog
   ],
   imports: [
     //Angular modules

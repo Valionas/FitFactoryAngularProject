@@ -29,8 +29,15 @@ p{
 .diet-container{
     margin-bottom:15%;
     text-align: center;
-    border:1px solid white;
+    border:3px solid white;
+    border-radius:3px;
     padding:2%;
+}
+.meals{
+    border-top:3px solid white;
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
 }
 ul{
     list-style-type:circle;

@@ -1,0 +1,32 @@
+<h2 style="color: black;">Lets create your new workout plan, shall we?</h2>
+<form #form="ngForm">
+  <input type="text" #title="ngModel" ngModel name="title" required placeholder="Workout Title...">
+  <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Workout description..."></textarea>
+  <mat-form-field appearance="fill" >
+    <mat-label>Workout Level</mat-label>
+    <mat-select #level="ngModel" ngModel name="level">
+      <mat-option *ngFor="let level of dietLevels" [value]="level.value">
+        {{level.viewValue}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <h3>Monday:</h3>
+  <input type="text">
+  <h3>Tuesday:</h3>
+  <input type="text">
+  <h3>Wednesday:</h3>
+  <input type="text">
+  <h3>Thursday:</h3>
+  <input type="text">
+  <h3>Friday:</h3>
+  <input type="text">
+  <h3>Saturday:</h3>
+  <input type="text">
+  <h3>Sunday:</h3>
+  <input type="text">
+</form>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancel</button>
+  <button *ngIf="!form.valid" mat-button  cdkFocusInitial>Submit</button>
+  <button *ngIf="form.valid" mat-button [mat-dialog-close]="form.valid" cdkFocusInitial>Submit</button>
+</mat-dialog-actions>

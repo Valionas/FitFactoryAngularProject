@@ -15,3 +15,51 @@ h2{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
+
+.container{
+    background-color: rgba(0,0,0,.5);
+    color:white;
+    border-radius:1%;
+    text-align: justify;
+    padding:5%;
+}
+p{
+    color:white;
+}
+.workout-container{
+    margin-bottom:15%;
+    text-align: center;
+    border:3px solid white;
+    border-radius: 3px;
+    padding:2%;
+}
+ul{
+    list-style-type:circle;
+}
+.meal-heading{
+    text-align: left;
+}
+.workoutDialog {
+    background-color: #08d;
+    border-radius: 12px;
+    border: 0;
+    box-sizing: border-box;
+    color: #eee;
+    cursor: pointer;
+    font-size: 18px;
+    height: 50px;
+    margin-top: 38px;
+    outline: 0;
+    margin-left:37%;
+    width: 25%;
+}
+
+textarea{
+    resize: none;
+}
+.weekly-plan{
+    display:flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    border-top:3px solid white;
+}
