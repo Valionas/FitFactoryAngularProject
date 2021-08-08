@@ -15,9 +15,9 @@
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.monday"> 
+                                <div *ngIf="workout.data.tuesday"> 
                                     <h2>Tuesday</h2>
-                                    <table *ngFor="let exercise of workout.data.monday">                         
+                                    <table *ngFor="let exercise of workout.data.tuesday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
@@ -27,9 +27,9 @@
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.monday"> 
+                                <div *ngIf="workout.data.thursday"> 
                                     <h2>Thursday</h2>
-                                    <table *ngFor="let exercise of workout.data.monday">                         
+                                    <table *ngFor="let exercise of workout.data.thursday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
@@ -39,21 +39,21 @@
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.monday"> 
+                                <div *ngIf="workout.data.saturday"> 
                                     <h2>Saturday</h2>
-                                    <table *ngFor="let exercise of workout.data.monday">                         
+                                    <table *ngFor="let exercise of workout.data.saturday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.monday"> 
+                                <div *ngIf="workout.data.sunday"> 
                                     <h2>Sunday</h2>
-                                    <table *ngFor="let exercise of workout.data.monday">                         
+                                    <table *ngFor="let exercise of workout.data.sunday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
                             </div>  
                             <div *ngIf="workout.data.createdBy==currentUser">
-                                <button>Edit</button>
+                                <button (click)="editWorkoutDialog(workout.id)">Edit</button>
                                 <button (click)="deleteWorkout(workout.id)">Delete</button>
                             </div>
                         </div>

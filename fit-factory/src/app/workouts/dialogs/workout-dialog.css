@@ -1,0 +1,36 @@
+input{
+    border: 1px solid black !important;
+    border-radius:5px !important ;
+    padding-left:10px !important;
+    width:50% !important;
+}
+.input-container{
+    position:relative;
+    width:400px;
+}
+.add-item{
+    border-radius:30%;
+    background-color: blue;
+    color:white;
+    position:absolute;
+    left:40%;
+    top:15px;
+}
+.add-item:hover{
+    background-color: blueviolet;
+}
+.add-item:active{
+    background-color:red;
+}
+.workoutItems{
+    width:50%;
+    border:1px solid black;
+    margin-left:25%;
+    text-align: center;
+}
+.workout-flex{
+    display:flex;
+}
+.workout-table{
+    width:400px;
+}

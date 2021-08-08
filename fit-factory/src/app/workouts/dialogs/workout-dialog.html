@@ -1,32 +1,130 @@
 <h2 style="color: black;">Lets create your new workout plan, shall we?</h2>
-<form #form="ngForm">
+<form #workoutForm="ngForm">
   <input type="text" #title="ngModel" ngModel name="title" required placeholder="Workout Title...">
   <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Workout description..."></textarea>
   <mat-form-field appearance="fill" >
     <mat-label>Workout Level</mat-label>
     <mat-select #level="ngModel" ngModel name="level">
-      <mat-option *ngFor="let level of dietLevels" [value]="level.value">
+      <mat-option *ngFor="let level of workoutLevels" [value]="level.value">
         {{level.viewValue}}
       </mat-option>
     </mat-select>
   </mat-form-field>
   <h3>Monday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="monday" ngModel #monday="ngModel">
+      <button class="add-item" (click)="addItem('monday',monday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="mondayExercises.length!==0">
+        <table *ngFor="let exercise of mondayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Tuesday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="tuesday" ngModel #tuesday="ngModel">
+      <button class="add-item" (click)="addItem('tuesday',tuesday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="tuesdayExercises.length!==0">
+        <table *ngFor="let exercise of tuesdayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Wednesday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="wednesday" ngModel #wednesday="ngModel">
+      <button class="add-item" (click)="addItem('wednesday',wednesday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="wednesdayExercises.length!==0">
+        <table *ngFor="let exercise of wednesdayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Thursday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="thursday" ngModel #thursday="ngModel">
+      <button class="add-item" (click)="addItem('thursday',thursday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="thursdayExercises.length!==0">
+        <table *ngFor="let exercise of thursdayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Friday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="friday" ngModel #friday="ngModel">
+      <button class="add-item" (click)="addItem('friday',friday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="fridayExercises.length!==0">
+        <table *ngFor="let exercise of fridayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Saturday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="saturday" ngModel #saturday="ngModel">
+      <button class="add-item" (click)="addItem('saturday',saturday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="saturdayExercises.length!==0">
+        <table *ngFor="let exercise of saturdayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Sunday:</h3>
-  <input type="text">
+  <div class="workout-flex">
+    <div class="input-container">
+      <input type="text" name="sunday" ngModel #sunday="ngModel">
+      <button class="add-item" (click)="addItem('sunday',sunday.value)">+</button>
+    </div>
+    <div class="workout-table">
+      <div class="content" *ngIf="sundayExercises.length!==0">
+        <table *ngFor="let exercise of sundayExercises" class="workoutItems">
+          <tr>
+            <td>{{exercise}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </form>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
-  <button *ngIf="!form.valid" mat-button  cdkFocusInitial>Submit</button>
-  <button *ngIf="form.valid" mat-button [mat-dialog-close]="form.valid" cdkFocusInitial>Submit</button>
+  <button *ngIf="!workoutForm.valid" mat-button  cdkFocusInitial>Submit</button>
+  <button *ngIf="workoutForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value)" cdkFocusInitial>Submit</button>
 </mat-dialog-actions>
