@@ -1,0 +1,50 @@
+h1{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:45px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+h2{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:25px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    
+}
+.container{
+    background-color: rgba(0,0,0,.5);
+    color:white;
+    border-radius:1%;
+    text-align: justify;
+    padding:5%;
+}
+p{
+    color:white;
+}
+.info{
+    animation-delay: 1s;
+}
+.me{
+    width: 150px;
+    height: 150px;
+    background-image: url("https://lh3.googleusercontent.com/E7J-RaJDXcN2NOvqFekmOCAQ9tZ7JVWLsp8MgqW5HSGMHMdNrfWyHHmDYL6BYSb9P8LPsU3G05VHri1xHiU6glP9S0ca61dc2E6gtD7ppgJJmWuMYsw836mz8extbL-0D3t_RHUeNctT7BSLkoD8XtdmCCJTbRm1m7ObwGoNa5XvvCAgUbxyEV-VRe_zTOHEzqj6Ja_Q8DNIVmr8or9vDtUcUMjeM-VJYmTAyQ30t4jH3G-iBze26KSz94wFq0YW2CDVp8cGVAtmiK-dqNrM92pLixX9v9_HJNHv6ifvO11zGUdN8Hnnze4_tgEpd55PD0K4hcjMbFzWxTsL1Tb8Lsfk_HDQdmKIlrXlwnRJNBKMhnWDCxBEFx8mRkVRPpEcTH3i08t2FTrr6f2npW-ooK1E9clyUmahue3ld85UvJyuP2Bxn5zR_OmF4jPWgakK4VxHjFS8qdYTF7EYnf1cdMXvivzpsYe6y3KHh7OnptkkWa-pGyvVYCfdcKz8feGxQ5EGP7qlmJ5VN4KNe_jQhFHjHV3ljoUwmddxYoKOxuzCcExGScKh5mroINFNbQfpTEB-wJeEIwvqxk75aElwv7CBz8BffRdOqPRVwgQnYOw1TrOhIdnchWdqxhQ6N5ivickOSTIgNAUJ2IMgnXov04df4bGILsXfsPDpeJ2hsMni_kdTQMQQ18iG5KaJhhufUS7V-76-CfnBWS_7Fl2UiHw=w678-h903-no?authuser=0");
+    border-radius: 60%;
+    border:4px solid gray;
+    background-size: cover;
+    animation-delay:2s;
+    flex-grow:3;
+    margin-bottom:10%;
+}
+.about-me{
+    display:flex;
+    justify-content: space-between;
+
+}
+.pic{
+    margin-left:10%;
+}

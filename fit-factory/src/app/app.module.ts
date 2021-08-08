@@ -16,6 +16,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import {MatSelectModule} from '@angular/material/select';
+import {MatMenuModule} from '@angular/material/menu';
 //App Components
 import { LoginComponent } from './auth-components/login/login.component';
 import { RegisterComponent } from './auth-components/register/register.component';
@@ -29,6 +30,7 @@ import { NavbarComponent } from './home/navigation/navbar/navbar.component';
 import { AuthenticateGuard } from './guards/auth.activate';
 import { CRUDService } from './services/crud-service';
 import { FormsModule } from '@angular/forms';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -40,7 +42,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     NavbarComponent,
     AddDietDialog,
-    AddWorkoutDialog
+    AddWorkoutDialog,
+    ContactUsComponent
   ],
   imports: [
     //Angular modules
@@ -60,6 +63,7 @@ import { FormsModule } from '@angular/forms';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatMenuModule,
   ],
   exports: [
     MatToolbarModule,

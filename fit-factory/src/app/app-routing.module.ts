@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LoginComponent } from './auth-components/login/login.component';
 import { RegisterComponent } from './auth-components/register/register.component';
+import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DietsComponent } from './diets/diets.component';
 import { AuthenticateGuard } from './guards/auth.activate';
 import { HomeComponent } from './home/home.component';
@@ -65,6 +66,15 @@ const routes: Routes = [
   {
     path: 'calculator',
     component: PersonalCalorieCalculatorComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login',
+    }
+  },
+  {
+    path: 'contactus',
+    component: ContactUsComponent,
     canActivate:[AuthenticateGuard],
     data:{
       authenticated: true,

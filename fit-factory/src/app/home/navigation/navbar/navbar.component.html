@@ -1,5 +1,6 @@
 <mat-toolbar color="primary">
-    <img src="https://pngimage.net/wp-content/uploads/2018/06/sports-logo-png-5.png" alt="" width="60px" height="60px" style="margin-right:10px">
+    <img src="https://pngimage.net/wp-content/uploads/2018/06/sports-logo-png-5.png" alt="" width="60px" height="60px"
+        style="margin-right:10px">
     <span routerLink="/">Fit-Factory</span>
 
     <div class="spacer"></div>
@@ -8,7 +9,13 @@
         <a mat-button routerLink="/diets">Diets</a>
         <a mat-button routerLink="/workouts">Workouts</a>
         <a mat-button routerLink="/calculator">Calorie Calculator</a>
-        <a mat-button (click)="logoutHandler()" >Logout</a>
+        <button mat-button [matMenuTriggerFor]="menu">Useful Information</button>
+        <a mat-button routerLink="/contactus">Contact us</a>
+        <mat-menu #menu="matMenu">
+            <a mat-menu-item>Macronutrients</a>
+            <a mat-menu-item>Types of workouts</a>
+        </mat-menu>
+        <a mat-button (click)="logoutHandler()">Logout</a>
     </div>
     <div *ngIf="!this.firebaseAuthService.isLoggedIn">
         <a mat-button routerLink="/login">Login</a>
