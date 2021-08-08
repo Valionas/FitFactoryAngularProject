@@ -12,7 +12,7 @@ export class HomeComponent implements OnInit {
     public firebaseAuthService: FirebaseAuthService,
     private router: Router) { }
   ngOnInit(): void {
-    this.firebaseAuthService.getUserId();
+    this.firebaseAuthService.setUserId();
   }
 
 

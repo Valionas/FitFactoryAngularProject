@@ -1,6 +1,7 @@
 <h2 style="color: black;">What will be your next diet?</h2>
 <form #form="ngForm">
   <input type="text" #title="ngModel" ngModel name="title" required placeholder="Diet Title...">
+  <input type="number" #duration="ngModel" ngModel name="duration" required placeholder="Diet Duration...">
   <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Diet description..."></textarea>
   <mat-form-field appearance="fill" >
     <mat-label>Diet Level</mat-label>
@@ -11,14 +12,56 @@
     </mat-select>
   </mat-form-field>
   <h3>Breakfast meals:</h3>
-  <input type="text">
+  <div class="meal-flex">
+    <div class="input-container">
+      <input type="text" name="breakfastMeal" ngModel #breakfastMeal="ngModel" required >
+      <button class="add-item" (click)="addItem('breakfast',breakfastMeal.value)">+</button>
+    </div>
+    <div class="meal-table">
+      <div class="content" *ngIf="breakfastMeals.length!==0">
+        <table *ngFor="let meal of breakfastMeals" class="mealItems">
+          <tr>
+            <td>{{meal}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Lunch meals</h3>
-  <input type="text">
+  <div class="meal-flex">
+    <div class="input-container">
+      <input type="text" name="lunchMeal" ngModel #lunchMeal="ngModel" required>
+      <button class="add-item" (click)="addItem('lunch',lunchMeal.value)" >+</button>
+    </div>
+    <div class="meal-table" >
+      <div class="content" *ngIf="lunchMeals.length!==0">
+        <table *ngFor="let meal of lunchMeals" class="mealItems">
+          <tr>
+            <td>{{meal}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
   <h3>Dinner meals</h3>
-  <input type="text">
+  <div class="meal-flex">
+    <div class="input-container">
+      <input type="text" name="dinnerMeal" ngModel #dinnerMeal="ngModel" required>
+      <button class="add-item" (click)="addItem('dinner',dinnerMeal.value)">+</button>
+    </div>
+    <div class="meal-table" >
+      <div class="content" *ngIf="dinnerMeals.length!==0">
+        <table *ngFor="let meal of dinnerMeals" class="mealItems">
+          <tr>
+            <td>{{meal}}</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </div>
 </form>
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button *ngIf="!form.valid" mat-button  cdkFocusInitial>Submit</button>
-  <button *ngIf="form.valid" mat-button [mat-dialog-close]="form.valid" cdkFocusInitial>Submit</button>
+  <button *ngIf="form.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value, duration.value)" cdkFocusInitial>Submit</button>
 </mat-dialog-actions>
