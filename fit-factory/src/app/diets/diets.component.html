@@ -29,7 +29,7 @@
                                 </div>
                             </div>         
                             <div *ngIf="diet.data.createdBy==currentUser">
-                                <button>Edit</button>
+                                <button (click)="editDietDialog(diet.id)">Edit</button>
                                 <button (click)="deleteDiet(diet.id)">Delete</button>
                             </div>
                         </div>

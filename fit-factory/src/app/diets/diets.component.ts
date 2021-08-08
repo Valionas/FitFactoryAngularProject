@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Inject, OnInit, ViewChild } from '@angular/core';
 import { CRUDService } from '../services/crud-service';
 import { FirebaseAuthService } from '../services/firebase-auth.service';
-import { MatDialog } from '@angular/material/dialog';
+import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
+import { NgForm } from '@angular/forms';
 interface DietLevels {
   value: string;
   viewValue: string;
@@ -67,6 +68,24 @@ export class DietsComponent implements OnInit {
     });
 
   }
+
+  editDietDialog(dietId:string){
+    var diet = this.dietsList.find(x => x.id == dietId);  
+    const dialogRef = this.dialog.open(AddDietDialog, {
+      autoFocus: false,
+      maxHeight: '90vh',
+      data: diet,
+    });
+
+    dialogRef.disableClose = true;
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        Swal.fire('Success!', 'Your diet has been updated!', 'success');
+        this.dietService.updateItem('diets',result,dietId).then();
+      }
+    });
+  
+  }
 }
 
 
@@ -76,10 +95,28 @@ export class DietsComponent implements OnInit {
   styleUrls: ['./diets.component.css', '../animation.css', 'dialogs/diet-dialog.css']
 })
 export class AddDietDialog {
+  @ViewChild('dietForm') dietForm!: NgForm;
   public currentUser = localStorage.getItem('userID');
   public breakfastMeals: any[] = [];
   public lunchMeals: any[] = [];
   public dinnerMeals: any[] = [];
+  
+  constructor( @Inject(MAT_DIALOG_DATA) public data: any){}
+
+  ngOnInit(){
+    if(this.data){ 
+      let dietInfo = this.data.data;
+      setTimeout(() => { 
+        this.dietForm.controls["title"].setValue(dietInfo.title);
+        this.dietForm.controls["duration"].setValue(dietInfo.duration);
+        this.dietForm.controls["description"].setValue(dietInfo.description);
+        this.dietForm.controls["level"].setValue(dietInfo.level);
+        this.breakfastMeals = dietInfo.breakfast;
+        this.lunchMeals = dietInfo.lunch;
+        this.dinnerMeals = dietInfo.dinner;    
+      });
+    }
+  }
 
   addItem(category: string, item: string) {
     if (item !== "" && item !== undefined) {
@@ -105,6 +142,7 @@ export class AddDietDialog {
       })
     }
   }
+
   public dietLevels: DietLevels[] = [
     { value: 'Beginner', viewValue: 'Rookie' },
     { value: 'Medium', viewValue: 'Fit-Cadet' },
