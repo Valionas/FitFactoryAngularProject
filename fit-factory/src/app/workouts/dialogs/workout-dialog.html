@@ -1,15 +1,33 @@
 <h2 style="color: black;">Lets create your new workout plan, shall we?</h2>
-<form #workoutForm="ngForm">
+<form #workoutForm="ngForm" class="workout-flex-form">
+  <h2>Workout Title</h2>
   <input type="text" #title="ngModel" ngModel name="title" required placeholder="Workout Title...">
+  <h2>Workout description</h2>
   <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Workout description..."></textarea>
-  <mat-form-field appearance="fill" >
-    <mat-label>Workout Level</mat-label>
-    <mat-select #level="ngModel" ngModel name="level">
-      <mat-option *ngFor="let level of workoutLevels" [value]="level.value">
-        {{level.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="select-flex">
+    <div class="select-item">
+      <h2>Level</h2>
+      <mat-form-field appearance="fill" class="select-level">
+        <mat-label>Workout Level</mat-label>
+        <mat-select #level="ngModel" ngModel name="level">
+          <mat-option *ngFor="let level of workoutLevels" [value]="level.value">
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="select-item">
+      <h2>Purpose</h2>
+      <mat-form-field appearance="fill" class="select-level">
+        <mat-label>Workout Purpose</mat-label>
+        <mat-select #purpose="ngModel" ngModel name="purpose">
+          <mat-option *ngFor="let purpose of workoutPurpose" [value]="purpose">
+            {{purpose}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
   <h3>Monday:</h3>
   <div class="workout-flex">
     <div class="input-container">
@@ -18,9 +36,10 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="mondayExercises.length!==0">
-        <table *ngFor="let exercise of mondayExercises" class="workoutItems">
+        <table *ngFor="let exercise of mondayExercises" class="workoutItems animated slideInRight">
           <tr>
             <td>{{exercise}}</td>
+            <button>-</button>
           </tr>
         </table>
       </div>
@@ -126,5 +145,5 @@
 <mat-dialog-actions align="end">
   <button mat-button mat-dialog-close>Cancel</button>
   <button *ngIf="!workoutForm.valid" mat-button  cdkFocusInitial>Submit</button>
-  <button *ngIf="workoutForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value)" cdkFocusInitial>Submit</button>
+  <button *ngIf="workoutForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value,purpose.value)" cdkFocusInitial>Submit</button>
 </mat-dialog-actions>

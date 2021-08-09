@@ -169,11 +169,20 @@ export class AddWorkoutDialog {
     { value: 'Intermediate', viewValue: 'Fit-Commander (Intermediate)' }
   ];
 
-  sendObj(title: string, description: string, level: string) {
+  public workoutPurpose = [
+    'Strength',
+    'Gain weight',
+    'Lose Weight',
+    'Cardiovascular',
+    'Endurance',
+    'Competition'
+  ]
+  sendObj(title: string, description: string, level: string, purpose:string) {
     return ({
       title,
       description,
       level,
+      purpose,
       monday:this.mondayExercises,
       tuesday:this.tuesdayExercises,
       wednesday:this.wednesdayExercises,

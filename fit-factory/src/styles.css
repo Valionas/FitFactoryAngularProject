@@ -10,3 +10,6 @@ body {
     background-attachment: fixed;
     background-color: black;
 }
+mat-dialog-container {
+    background: rgb(245, 238, 238, 1) !important;
+ }
