@@ -1,30 +1,64 @@
 <h1 class="animated fadeIn">Calorie Calculator</h1>
 <div class="wrapper animated fadeIn">
     <h2 style="color: black;">Insert the following data</h2>
-    <form #workoutForm="ngForm" class="workout-flex-form">
+    <form #calorieForm="ngForm" class="workout-flex-form">
         <h2>Age:</h2>
-        <input type="text" #Age="ngModel" ngModel name="Age" required placeholder="Age...">
+        <input type="number" #Age="ngModel" ngModel name="Age" required max="110" min="14" placeholder="Age...">
+        <p *ngIf="Age.touched && Age.errors?.required" class="showError animated zoomIn">
+            Age is required!
+        </p>
+        <p *ngIf="Age.touched && Age.errors?.min" class="showError animated zoomIn">
+            This calculator is suitable for users above the age of 14!
+        </p>
+        <p *ngIf="Age.touched && Age.errors?.max" class="showError animated zoomIn">
+            This calculator is suitable for users under the age of 110!
+        </p>
         <h2>Height(cm):</h2>
-        <input type="text" #Height="ngModel" ngModel name="Height" required placeholder="Height...">
+        <input type="number" #Height="ngModel" ngModel name="Height" required min="130" max="260" placeholder="Height...">
+        <p *ngIf="Height.touched && Height.errors?.required" class="showError animated zoomIn">
+            Height is required!
+        </p>
+        <p *ngIf="Height.touched && Height.errors?.min" class="showError animated zoomIn">
+            Insert a valid height!
+        </p>
+        <p *ngIf="Height.touched && Height.errors?.max" class="showError animated zoomIn">
+            Insert a valid height!
+        </p>
         <h2>Weight(kg)</h2>
-        <input type="number" #Weight="ngModel" ngModel name="Weight" required placeholder="Weight...">
+        <input type="number" #Weight="ngModel" ngModel name="Weight"  min="30" max="300" required placeholder="Weight...">
+        <p *ngIf="Weight.touched && Weight.errors?.required" class="showError animated zoomIn">
+            Weight is required!
+        </p>
+        <p *ngIf="Weight.touched && Weight.errors?.min" class="showError animated zoomIn">
+            Insert a valid weight!
+        </p>
+        <p *ngIf="Weight.touched && Weight.errors?.max" class="showError animated zoomIn">
+            Insert a valid weight!
+        </p>
         <h2>Activity level</h2>
         <mat-form-field class="select-level">
-            <mat-select #level="ngModel" ngModel name="level" placeholder="Activity level ...">
-                <mat-option *ngFor="let level of activityLevels" [value]="level">
-                    {{level}}
+            <mat-select #level="ngModel" ngModel name="level" placeholder="Activity level ..." required>
+                <mat-option *ngFor="let level of activityLevels" [value]="level.calculateValue">
+                    {{level.readValue}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <p *ngIf="level.touched && level.errors?.required" class="showError animated zoomIn">
+            Choose your activity level!
+        </p>
         <h2>Calorie Purpose</h2>
         <mat-form-field class="select-level">
-            <mat-select #purpose="ngModel" ngModel name="purpose" placeholder="Purpose...">
+            <mat-select #purpose="ngModel" ngModel name="purpose" placeholder="Purpose..." required>
                 <mat-option *ngFor="let purpose of workoutPurpose" [value]="purpose">
                     {{purpose}}
                 </mat-option>
             </mat-select>
         </mat-form-field>
+        <p *ngIf="purpose.touched && level.errors?.required" class="showError animated zoomIn">
+            Please tell us your purpose!
+        </p>
     </form>
-    <button mat-button class="calculateButton">Calculate</button>
+    <button  *ngIf="!calorieForm.valid"  caloriemat-button class="calculateButton" (click)="calculateCalories(Age.value,Height.value,Weight.value,level.value,purpose.value,false)">Calculate</button>
+    <button *ngIf="calorieForm.valid "mat-button class="calculateButton" (click)="calculateCalories(Age.value,Height.value,Weight.value,level.value,purpose.value,true)">Calculate</button>
 
 </div>

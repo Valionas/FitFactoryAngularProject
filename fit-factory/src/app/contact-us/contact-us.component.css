@@ -41,6 +41,7 @@ p{
     animation-delay:2s;
     flex-grow:3;
     margin-bottom:10%;
+    margin-left:6%;
 }
 .about-me{
     display:flex;
@@ -49,4 +50,5 @@ p{
 }
 .pic{
     margin-left:10%;
+    width:50%;
 }

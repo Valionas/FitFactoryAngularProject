@@ -58,7 +58,6 @@ textarea{
     background-color:rgba(0,0,0,.5);
     text-align: center;
     width:60%;
-    padding:1%;
     margin-left:18%;
     color:white;
 
@@ -87,5 +86,6 @@ h2{
     background: rgb(101,81,86);
     background: linear-gradient(90deg, rgba(101,81,86,1) 7%, rgba(121,9,105,1) 98%);
     border-radius: 3px;
-    
+    color:white;
+    font-family: 'Russo One';
 }

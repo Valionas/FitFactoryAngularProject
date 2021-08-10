@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import Swal from 'sweetalert2';
 
 
 
@@ -7,14 +8,12 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './personal-calorie-calculator.component.html',
   styleUrls: ['./personal-calorie-calculator.component.css','../animation.css']
 })
-export class PersonalCalorieCalculatorComponent implements OnInit {
-  public favoriteSeason!: string;
-  seasons: string[] = ['Winter', 'Spring', 'Summer', 'Autumn'];
+export class PersonalCalorieCalculatorComponent  {
   public activityLevels = [
-    'Sedentary Life',
-    '1 to 3 times a week',
-    '3 to 5 times a week',
-    '5 to 6/7 times a week',
+    {readValue:'Sedentary Life', calculateValue:1},
+    {readValue:'1 to 3 times a week', calculateValue:2},
+    {readValue:'3 to 5 times a week', calculateValue:3},
+    {readValue:'5 to 6/7 times a week', calculateValue:4},
   ]
 
   public workoutPurpose = [
@@ -22,10 +21,12 @@ export class PersonalCalorieCalculatorComponent implements OnInit {
     'Weight Gain',
     'Maintain'
   ]
-  constructor() { }
-
-
-  ngOnInit(): void {
+  
+  calculateCalories(age:number,height:number,weight:number,activity:string,purpose:string,isValid:boolean){
+    if(isValid){
+      Swal.fire('Well done','This works','success')
+    }else{
+      Swal.fire("Ooops",'Be sure to insert all data correctly','error')
+    }
   }
-
 }
