@@ -2,36 +2,29 @@
 <div class="wrapper animated fadeIn">
     <h2 style="color: black;">Insert the following data</h2>
     <form #workoutForm="ngForm" class="workout-flex-form">
-      <h2>Age:</h2>
-      <input type="text" #Age="ngModel" ngModel name="Age" required placeholder="Age...">
-      <h2>Height:</h2>
-      <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Height..."></textarea>
-      <div class="select-flex">
-        <div class="select-item">
-          <h2>Activity level</h2>
-          <mat-form-field appearance="fill" class="select-level">
-            <mat-label>Activity Level</mat-label>
-            <mat-select #level="ngModel" ngModel name="level">
-              <mat-option *ngFor="let level of activityLevels" [value]="level">
-                {{level}}
-              </mat-option>
+        <h2>Age:</h2>
+        <input type="text" #Age="ngModel" ngModel name="Age" required placeholder="Age...">
+        <h2>Height(cm):</h2>
+        <input type="text" #Height="ngModel" ngModel name="Height" required placeholder="Height...">
+        <h2>Weight(kg)</h2>
+        <input type="number" #Weight="ngModel" ngModel name="Weight" required placeholder="Weight...">
+        <h2>Activity level</h2>
+        <mat-form-field class="select-level">
+            <mat-select #level="ngModel" ngModel name="level" placeholder="Activity level ...">
+                <mat-option *ngFor="let level of activityLevels" [value]="level">
+                    {{level}}
+                </mat-option>
             </mat-select>
-          </mat-form-field>
-        </div>
-        <div class="select-item">
-          <h2>Calorie Purpose</h2>
-          <mat-form-field appearance="fill" class="select-level">
-            <mat-label>Workout Purpose</mat-label>
-            <mat-select #purpose="ngModel" ngModel name="purpose">
-              <mat-option *ngFor="let purpose of workoutPurpose" [value]="purpose">
-                {{purpose}}
-              </mat-option>
+        </mat-form-field>
+        <h2>Calorie Purpose</h2>
+        <mat-form-field class="select-level">
+            <mat-select #purpose="ngModel" ngModel name="purpose" placeholder="Purpose...">
+                <mat-option *ngFor="let purpose of workoutPurpose" [value]="purpose">
+                    {{purpose}}
+                </mat-option>
             </mat-select>
-          </mat-form-field>
-        </div>
-      </div>
-      
+        </mat-form-field>
     </form>
-    <button  mat-button class="calculateButton" >Calculate</button>
- 
+    <button mat-button class="calculateButton">Calculate</button>
+
 </div>

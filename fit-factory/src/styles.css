@@ -89,3 +89,7 @@ mat-dialog-container {
   .mat-ripple{
     display:none !important;
   }
+  .mat-toolbar.mat-primary{
+    background: rgb(169,21,51);
+background: linear-gradient(90deg, rgba(169,21,51,1) 4%, rgba(169,21,51,1) 15%, rgba(202,115,139,1) 36%, rgba(121,9,105,1) 98%);
+  }

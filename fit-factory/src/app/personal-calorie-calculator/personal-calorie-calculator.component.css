@@ -1,8 +1,9 @@
 input{
-    border: 1px solid black !important;
+    border: 2px solid white !important;
     border-radius:5px !important ;
     padding-left:10px !important;
     width:70% !important;
+    color:white;
 }
 textarea{
     width:71%;
@@ -48,18 +49,19 @@ textarea{
     align-items: center;
 }
 .select-level{
-    width:250px;
-}
-.select-flex{
-    display:flex;
-    justify-content: space-around;
-    margin-top:5%;
-}
-.wrapper{
-    background-color: white;
     text-align: center;
-    width:100%;
-    padding:10%;
+    width:70%;
+    background-color: white;
+}
+
+.wrapper{
+    background-color:rgba(0,0,0,.5);
+    text-align: center;
+    width:60%;
+    padding:1%;
+    margin-left:18%;
+    color:white;
+
 }
 h1{
     font-family: 'Russo One', sans-serif;
@@ -77,4 +79,13 @@ h2{
     color:white;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
+}
+.calculateButton{
+    width:50%;
+    margin-top:5%;
+    font-size:30px;
+    background: rgb(101,81,86);
+    background: linear-gradient(90deg, rgba(101,81,86,1) 7%, rgba(121,9,105,1) 98%);
+    border-radius: 3px;
+    
 }
