@@ -38,8 +38,10 @@
       <div class="content" *ngIf="mondayExercises.length!==0">
         <table *ngFor="let exercise of mondayExercises" class="workoutItems animated slideInRight">
           <tr>
-            <td>{{exercise}}</td>
-            <button>-</button>
+            <div class="item-container-row">
+              <td>{{exercise}}</td>
+              <button class="remove-item" (click)="removeItem('monday',exercise)">-</button>
+            </div>
           </tr>
         </table>
       </div>
@@ -53,9 +55,12 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="tuesdayExercises.length!==0">
-        <table *ngFor="let exercise of tuesdayExercises" class="workoutItems">
+        <table *ngFor="let exercise of tuesdayExercises" class="workoutItems  animated slideInRight">
           <tr>
-            <td>{{exercise}}</td>
+            <div class="item-container-row">
+              <td>{{exercise}}</td>
+              <button class="remove-item" (click)="removeItem('tuesday',exercise)">-</button>
+            </div>
           </tr>
         </table>
       </div>
@@ -69,9 +74,12 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="wednesdayExercises.length!==0">
-        <table *ngFor="let exercise of wednesdayExercises" class="workoutItems">
+        <table *ngFor="let exercise of wednesdayExercises" class="workoutItems  animated slideInRight">
           <tr>
-            <td>{{exercise}}</td>
+            <div class="item-container-row">
+              <td>{{exercise}}</td>
+              <button class="remove-item" (click)="removeItem('wednesday',exercise)">-</button>
+            </div>
           </tr>
         </table>
       </div>
@@ -85,9 +93,10 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="thursdayExercises.length!==0">
-        <table *ngFor="let exercise of thursdayExercises" class="workoutItems">
+        <table *ngFor="let exercise of thursdayExercises" class="workoutItems  animated slideInRight">
           <tr>
             <td>{{exercise}}</td>
+            <button class="remove-item" (click)="removeItem('thursday',exercise)">-</button>
           </tr>
         </table>
       </div>
@@ -101,9 +110,10 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="fridayExercises.length!==0">
-        <table *ngFor="let exercise of fridayExercises" class="workoutItems">
+        <table *ngFor="let exercise of fridayExercises" class="workoutItems  animated slideInRight">
           <tr>
             <td>{{exercise}}</td>
+            <button class="remove-item" (click)="removeItem('friday',exercise)">-</button>
           </tr>
         </table>
       </div>
@@ -117,9 +127,10 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="saturdayExercises.length!==0">
-        <table *ngFor="let exercise of saturdayExercises" class="workoutItems">
+        <table *ngFor="let exercise of saturdayExercises" class="workoutItems  animated slideInRight">
           <tr>
             <td>{{exercise}}</td>
+            <button class="remove-item" (click)="removeItem('saturday',exercise)">-</button>
           </tr>
         </table>
       </div>
@@ -133,9 +144,10 @@
     </div>
     <div class="workout-table">
       <div class="content" *ngIf="sundayExercises.length!==0">
-        <table *ngFor="let exercise of sundayExercises" class="workoutItems">
+        <table *ngFor="let exercise of sundayExercises" class="workoutItems  animated slideInRight">
           <tr>
             <td>{{exercise}}</td>
+            <button class="remove-item" (click)="removeItem('sunday',exercise)">-</button>
           </tr>
         </table>
       </div>

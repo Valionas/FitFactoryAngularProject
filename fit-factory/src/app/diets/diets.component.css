@@ -63,3 +63,7 @@ ul{
 textarea{
     resize: none;
 }
+.item-container-row{
+    position:relative;
+
+}

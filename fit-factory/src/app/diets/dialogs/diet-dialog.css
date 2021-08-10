@@ -4,9 +4,15 @@ input{
     padding-left:10px !important;
     width:50% !important;
 }
+textarea{
+    width:52%;
+    border: 1px solid black !important;
+    border-radius:5px !important ;
+    padding-left:10px !important;
+}
 .input-container{
     position:relative;
-    width:400px;
+    width:300px;
 }
 .add-item{
     border-radius:30%;
@@ -30,7 +36,22 @@ input{
 }
 .meal-flex{
     display:flex;
+    margin-left:35%;
+    margin-bottom:2%;
 }
 .meal-table{
     width:400px;
+}
+.diet-flex-form{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+.remove-item{
+    border-radius:30%;
+    background-color: red;
+    color:white;
+    position:absolute;
+    left:80%;
+    top:15px;
 }

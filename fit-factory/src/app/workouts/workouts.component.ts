@@ -163,6 +163,39 @@ export class AddWorkoutDialog {
     }
   }
 
+  removeItem(category:string,item:string){
+    switch(category){
+      case "monday":
+        let mondayExIndex = this.mondayExercises.indexOf(item);
+        this.mondayExercises.splice(mondayExIndex,1);
+        break;
+      case "tuesday":
+        let tuesdayExIndex = this.tuesdayExercises.indexOf(item);
+        this.tuesdayExercises.splice(tuesdayExIndex,1);
+        break;
+      case "wednesday":
+        let wednesdayExIndex = this.wednesdayExercises.indexOf(item);
+        this.wednesdayExercises.splice(wednesdayExIndex,1);
+        break;
+      case "thursday":
+        let thursdayExIndex = this.thursdayExercises.indexOf(item);
+        this.thursdayExercises.splice(thursdayExIndex,1);
+        break;
+      case "friday":
+        let fridayExIndex = this.fridayExercises.indexOf(item);
+        this.fridayExercises.splice(fridayExIndex,1);
+        break;
+      case "saturday":
+        let saturdayExIndex = this.saturdayExercises.indexOf(item);
+        this.saturdayExercises.splice(saturdayExIndex,1);
+        break;
+      case "sunday":
+        let sundayExIndex = this.sundayExercises.indexOf(item);
+        this.sundayExercises.splice(sundayExIndex,1);
+        break;
+    }
+    
+  }
   public workoutLevels: WorkoutLevels[] = [
     { value: 'Beginner', viewValue: 'Rookie (Beginner)' },
     { value: 'Medium', viewValue: 'Fit-Cadet (Medium)' },

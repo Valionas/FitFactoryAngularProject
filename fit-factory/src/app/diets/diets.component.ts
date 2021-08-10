@@ -143,6 +143,22 @@ export class AddDietDialog {
     }
   }
 
+  removeItem(category:string,item:string){
+    switch(category){
+      case "breakfast":
+        let breakfastIndex = this.breakfastMeals.indexOf(item);
+        this.breakfastMeals.splice(breakfastIndex,1);
+        break;
+      case "lunch":
+        let lunchIndex = this.lunchMeals.indexOf(item);
+        this.lunchMeals.splice(lunchIndex,1);
+        break;
+      case "dinner":
+        let dinnerIndex = this.dinnerMeals.indexOf(item);
+        this.dinnerMeals.splice(dinnerIndex,1);
+        break;   
+  }
+  }
   public dietLevels: DietLevels[] = [
     { value: 'Beginner', viewValue: 'Rookie' },
     { value: 'Medium', viewValue: 'Fit-Cadet' },

@@ -55,3 +55,16 @@ textarea{
     justify-content: space-around;
     margin-top:5%;
 }
+.item-container-row{
+    position:relative;
+
+}
+.remove-item{
+    border-radius:30%;
+    background-color: red;
+    color:white;
+    position:absolute;
+    left:80%;
+    top:15px;
+}
+

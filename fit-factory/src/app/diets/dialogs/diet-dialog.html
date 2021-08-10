@@ -1,5 +1,5 @@
 <h2 style="color: black;">What will be your next diet?</h2>
-<form #dietForm="ngForm">
+<form #dietForm="ngForm" class="diet-flex-form">
   <input type="text" #title="ngModel" ngModel name="title" required placeholder="Diet Title...">
   <input type="number" #duration="ngModel" ngModel name="duration" required placeholder="Diet Duration...">
   <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Diet description..."></textarea>
@@ -19,9 +19,12 @@
     </div>
     <div class="meal-table">
       <div class="content" *ngIf="breakfastMeals.length!==0">
-        <table *ngFor="let meal of breakfastMeals" class="mealItems">
+        <table *ngFor="let meal of breakfastMeals" class="mealItems animated slideInRight">
           <tr>
-            <td>{{meal}}</td>
+            <div class="item-container-row">
+              <td>{{meal}}</td>
+              <button class="remove-item" (click)="removeItem('breakfast',meal)">-</button>
+            </div>
           </tr>
         </table>
       </div>
@@ -35,9 +38,12 @@
     </div>
     <div class="meal-table" >
       <div class="content" *ngIf="lunchMeals.length!==0">
-        <table *ngFor="let meal of lunchMeals" class="mealItems">
+        <table *ngFor="let meal of lunchMeals" class="mealItems animated slideInRight">
           <tr>
-            <td>{{meal}}</td>
+            <div class="item-container-row">
+              <td>{{meal}}</td>
+              <button class="remove-item" (click)="removeItem('lunch',meal)">-</button>
+            </div>
           </tr>
         </table>
       </div>
@@ -51,9 +57,12 @@
     </div>
     <div class="meal-table" >
       <div class="content" *ngIf="dinnerMeals.length!==0">
-        <table *ngFor="let meal of dinnerMeals" class="mealItems">
+        <table *ngFor="let meal of dinnerMeals" class="mealItems animated slideInRight">
           <tr>
-            <td>{{meal}}</td>
+            <div class="item-container-row">
+              <td>{{meal}}</td>
+              <button class="remove-item" (click)="removeItem('dinner',meal)">-</button>
+            </div>
           </tr>
         </table>
       </div>
