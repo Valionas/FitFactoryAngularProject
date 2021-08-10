@@ -8,6 +8,7 @@ import { AuthenticateGuard } from './guards/auth.activate';
 import { HomeComponent } from './home/home.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculator/personal-calorie-calculator.component';
+import { WorkoutTypesComponent } from './workout-types/workout-types.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
 
 const routes: Routes = [
@@ -80,6 +81,15 @@ const routes: Routes = [
     data:{
       authenticated: true,
       onFailRedirect: '/login',
+    }
+  },
+  {
+    path:'workouts-types',
+    component: WorkoutTypesComponent,
+    canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login'
     }
   },
   {

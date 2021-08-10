@@ -1,0 +1,44 @@
+h1{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:45px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+
+h2{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:25px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+}
+.container{
+    background-color: rgba(0,0,0,.5);
+    color:white;
+    border-radius:1%;
+    text-align: justify;
+    padding:5%;
+    width:100%;
+}
+.imageType{
+    margin-right:15%;
+}
+img{
+    width:400px;
+    height:250px;
+}
+.workoutType{
+    display:flex;
+}
+.desc-text{
+    padding:5%;
+    color:black;
+    background-color: white;
+    border:1px solid red;
+    text-align: justify;
+    border-radius:5px;
+    font-weight:500;
+}

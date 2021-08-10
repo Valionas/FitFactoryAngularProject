@@ -43,3 +43,10 @@ mat-dialog-container {
 .mat-radio-label-content{
   color:white;
 }
+.mat-menu-panel{
+ background-color: rgba(121,9,105,1);
+}
+.mat-menu-item{
+  color:white;
+  font-weight: 450;
+}

@@ -34,6 +34,7 @@ import { CRUDService } from './services/crud-service';
 import { FormsModule } from '@angular/forms';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
+import { WorkoutTypesComponent } from './workout-types/workout-types.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -47,7 +48,8 @@ import { NotFoundPageComponent } from './not-found-page/not-found-page.component
     AddDietDialog,
     AddWorkoutDialog,
     ContactUsComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
+    WorkoutTypesComponent
   ],
   imports: [
     //Angular modules

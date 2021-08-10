@@ -1,0 +1,16 @@
+<h1 class="animated fadeIn">Workout Types</h1>
+<div class="wrapper animated fadeIn">
+    <div class="workoutType container" *ngFor="let type of workoutTypes">
+        <div class="imageType">
+            <img src={{type.imageUrl}} alt="">
+        </div>
+        <div class="desc">
+            <h2>{{type.title}}</h2>
+            <div class="desc-text">
+                <p>
+                    {{type.text}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
