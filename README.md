@@ -1,2 +1,2 @@
 # FitFactoryAngularProject
- Angular fitness application for monitoring health
+## Angular fitness application for monitoring health
