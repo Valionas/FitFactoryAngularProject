@@ -17,11 +17,13 @@ h2{
     
 }
 .container{
+    margin-top:10%;
     background-color: rgba(0,0,0,.5);
     color:white;
     border-radius:1%;
     text-align: justify;
     padding:5%;
+    width:100%;
 }
 p{
     color:white;

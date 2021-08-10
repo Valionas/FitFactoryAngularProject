@@ -6,6 +6,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DietsComponent } from './diets/diets.component';
 import { AuthenticateGuard } from './guards/auth.activate';
 import { HomeComponent } from './home/home.component';
+import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculator/personal-calorie-calculator.component';
 import { WorkoutsComponent } from './workouts/workouts.component';
 
@@ -80,6 +81,10 @@ const routes: Routes = [
       authenticated: true,
       onFailRedirect: '/login',
     }
+  },
+  {
+    path: "**",
+    component: NotFoundPageComponent
   }
 ];
 

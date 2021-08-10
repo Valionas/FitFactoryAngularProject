@@ -1,9 +1,37 @@
+<h1 class="animated fadeIn">Calorie Calculator</h1>
 <div class="wrapper animated fadeIn">
-    <h1>Calorie Calculator</h1>
-    <div class="container">
-        <form #form="ngForm">
-            <h2>Insert the following Data</h2>
-            input:text.inputText#
-        </form>
-    </div>
+    <h2 style="color: black;">Insert the following data</h2>
+    <form #workoutForm="ngForm" class="workout-flex-form">
+      <h2>Age:</h2>
+      <input type="text" #Age="ngModel" ngModel name="Age" required placeholder="Age...">
+      <h2>Height:</h2>
+      <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Height..."></textarea>
+      <div class="select-flex">
+        <div class="select-item">
+          <h2>Activity level</h2>
+          <mat-form-field appearance="fill" class="select-level">
+            <mat-label>Activity Level</mat-label>
+            <mat-select #level="ngModel" ngModel name="level">
+              <mat-option *ngFor="let level of activityLevels" [value]="level">
+                {{level}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+        <div class="select-item">
+          <h2>Calorie Purpose</h2>
+          <mat-form-field appearance="fill" class="select-level">
+            <mat-label>Workout Purpose</mat-label>
+            <mat-select #purpose="ngModel" ngModel name="purpose">
+              <mat-option *ngFor="let purpose of workoutPurpose" [value]="purpose">
+                {{purpose}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+        </div>
+      </div>
+      
+    </form>
+    <button  mat-button class="calculateButton" >Calculate</button>
+ 
 </div>

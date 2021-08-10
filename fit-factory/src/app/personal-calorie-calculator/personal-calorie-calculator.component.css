@@ -1,3 +1,66 @@
+input{
+    border: 1px solid black !important;
+    border-radius:5px !important ;
+    padding-left:10px !important;
+    width:70% !important;
+}
+textarea{
+    width:71%;
+    border: 1px solid black !important;
+    border-radius:5px !important ;
+    padding-left:10px !important;
+}
+.input-container{
+    position:relative;
+    width:300px;
+}
+.add-item{
+    border-radius:30%;
+    background-color: blue;
+    color:white;
+    position:absolute;
+    left:60%;
+    top:15px;
+}
+.add-item:hover{
+    background-color: blueviolet;
+}
+.add-item:active{
+    background-color:red;
+}
+.workoutItems{
+    width:50%;
+    border:1px solid black;
+    margin-left:5%;
+    text-align: center;
+}
+.workout-flex{
+    display:flex;
+    margin-left:30%;
+    margin-bottom:2%;
+}
+.workout-table{
+    width:400px;
+}
+.workout-flex-form{
+    display:flex;
+    flex-direction:column;
+    align-items: center;
+}
+.select-level{
+    width:250px;
+}
+.select-flex{
+    display:flex;
+    justify-content: space-around;
+    margin-top:5%;
+}
+.wrapper{
+    background-color: white;
+    text-align: center;
+    width:100%;
+    padding:10%;
+}
 h1{
     font-family: 'Russo One', sans-serif;
     text-align: center;
@@ -14,11 +77,4 @@ h2{
     color:white;
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
-}
-.container{
-    background-color: rgba(0,0,0,.5);
-    color:white;
-    border-radius:1%;
-    text-align: justify;
-    padding:5%;
 }
