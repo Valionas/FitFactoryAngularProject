@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import Swal from 'sweetalert2';
 
 @Injectable({
   providedIn: 'root'
@@ -27,6 +28,10 @@ export class FirebaseAuthService {
     .then(response => {
       this.isLoggedIn = true;
       localStorage.setItem('user',JSON.stringify(response.user))
+    }).catch(err => {
+      if(err.code=="auth/wrong-password"){
+        Swal.fire('Seems like something is wrong',"We couldn't find such user in our records, be sure to check your email and password once again!",'error')    
+      }
     })
   }
 
@@ -35,6 +40,10 @@ export class FirebaseAuthService {
     .then(response => {
       this.isLoggedIn = true;
       localStorage.setItem('user',JSON.stringify(response.user))
+    }).catch(err => {
+      if(err.code="auth/email-already-in-use"){
+        Swal.fire('Sorry to interupt the process!',"Seems like we have a member with that email, please use a different one","error");
+      }
     })
   }
 
