@@ -5,7 +5,7 @@ import { FirebaseAuthService } from 'src/app/services/firebase-auth.service';
 @Component({
   selector: 'app-reset-password',
   templateUrl: './reset-password.component.html',
-  styleUrls: ['./reset-password.component.css']
+  styleUrls: ['./reset-password.component.css','../../animation.css']
 })
 export class ResetPasswordComponent implements OnInit {
 
