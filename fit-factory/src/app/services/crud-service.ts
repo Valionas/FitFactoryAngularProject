@@ -22,4 +22,5 @@ export class CRUDService {
   deleteItem(url:string, itemId:string){
     return this.fireStore.doc(url+"/"+itemId).delete();
   }
+
 }

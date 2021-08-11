@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/auth';
+import * as firebase from 'firebase';
 import Swal from 'sweetalert2';
 
 @Injectable({
@@ -42,11 +43,17 @@ export class FirebaseAuthService {
       localStorage.setItem('user',JSON.stringify(response.user))
     }).catch(err => {
       if(err.code="auth/email-already-in-use"){
-        Swal.fire('Sorry to interupt the process!',"Seems like we have a member with that email, please use a different one","error");
+        Swal.fire('Sorry to interupt the process!',"Seems like we have a member with that email, please use a different one.","error");
       }
     })
   }
 
+  async resetPassword(email:string){
+    await firebase.default.auth().sendPasswordResetEmail(email)
+    .then(() => {
+      Swal.fire("Stay sharp!","We've just send you an email to reset your password!","success");
+    })
+  }
   logout(){
     this.firebaseAuth.signOut()
     this.isLoggedIn = false;

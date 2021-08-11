@@ -36,6 +36,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { WorkoutTypesComponent } from './workout-types/workout-types.component';
 import { MacronutrientsComponent } from './macronutrients/macronutrients.component';
+import { ResetPasswordComponent } from './auth-components/reset-password/reset-password.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -51,7 +52,8 @@ import { MacronutrientsComponent } from './macronutrients/macronutrients.compone
     ContactUsComponent,
     NotFoundPageComponent,
     WorkoutTypesComponent,
-    MacronutrientsComponent
+    MacronutrientsComponent,
+    ResetPasswordComponent
   ],
   imports: [
     //Angular modules
