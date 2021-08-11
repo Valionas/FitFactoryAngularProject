@@ -21,7 +21,24 @@
 <style>.mat-typography{font:400 14px/20px Roboto,Helvetica Neue,sans-serif;letter-spacing:normal;}body,html{height:100%;}body{margin:0;font-family:Roboto,Helvetica Neue,sans-serif;background:url(https://www.alexfit.net/wp-content/uploads/2014/08/tags-boys-fedor-shmidt-fit-girls-fitness-model-fittness-sports-women-wallpaper-3bef9e4268bb3b6bbcc8e78e7e997fed-large-1423871.jpg);background-position:50%;background-size:cover;background-repeat:no-repeat;background-attachment:fixed;background-color:#000;}</style><link rel="stylesheet" href="styles.5cabed5d147a20e9def6.css" media="print" onload="this.media='all'"><noscript><link rel="stylesheet" href="styles.5cabed5d147a20e9def6.css"></noscript></head>
 
 <body class="mat-typography">
+  <!-- Github Pages hack to allow SPA refresh without receiving 404. -->
+  <script>
+    (function () {
+      // Retrieve the URL the user was trying to access when receiving the 404.
+      var redirect = sessionStorage.redirect;
+      // Remove the URL from sessionStorage.
+      delete sessionStorage.redirect;
+      // Check if we actually need to redirect.
+      if (redirect && redirect != location.href) {
+        // We need to redirect to the URL the user was trying to access.
+        history.replaceState(null, null, redirect);
+      }
+    })();
+  </script>
+<!-- /Github Pages hack. -->
   <app-root></app-root>
-<script src="runtime.8e017230fcbe4be00754.js" defer></script><script src="polyfills.2c1de67a6b0b01f6de7f.js" defer></script><script src="main.9b872917125717aab8f9.js" defer></script>
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>  
+<script src="FitFactoryAngularProject/runtime.8e017230fcbe4be00754.js" defer></script>
+<script src="FitFactoryAngularProject/polyfills.2c1de67a6b0b01f6de7f.js" defer></script>
+<script src="FitFactoryAngularProject/main.9b872917125717aab8f9.js" defer></script>
+<script src="FitFactoryAngularProject/https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>  
 </body></html>
