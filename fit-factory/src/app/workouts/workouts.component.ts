@@ -97,6 +97,8 @@ export class WorkoutsComponent implements OnInit {
 export class AddWorkoutDialog {
   @ViewChild('workoutForm') workoutForm!: NgForm;
   public currentUser = localStorage.getItem('userID');
+  public currentUserEmail = localStorage.getItem('userEmail');
+
   public mondayExercises: any[] = [];
   public tuesdayExercises: any[] = [];
   public wednesdayExercises: any[] = [];
@@ -224,6 +226,7 @@ export class AddWorkoutDialog {
       saturday:this.saturdayExercises,
       sunday:this.sundayExercises,
       createdBy: this.currentUser,
+      creator: this.currentUserEmail,
     })
   }
 }

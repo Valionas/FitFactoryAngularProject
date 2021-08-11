@@ -35,6 +35,7 @@ import { FormsModule } from '@angular/forms';
 import { ContactUsComponent } from './contact-us/contact-us.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { WorkoutTypesComponent } from './workout-types/workout-types.component';
+import { MacronutrientsComponent } from './macronutrients/macronutrients.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +50,8 @@ import { WorkoutTypesComponent } from './workout-types/workout-types.component';
     AddWorkoutDialog,
     ContactUsComponent,
     NotFoundPageComponent,
-    WorkoutTypesComponent
+    WorkoutTypesComponent,
+    MacronutrientsComponent
   ],
   imports: [
     //Angular modules

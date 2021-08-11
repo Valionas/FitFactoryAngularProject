@@ -1,0 +1,30 @@
+<h1 class="animated fadeIn">Macronutrients</h1>
+<div class="wrapper animated fadeIn">
+    <div class="workoutType container" >
+       <div  class="inner-content"*ngFor="let info of marcroNutrientsInfo">
+           <h2>{{info.data.title}}</h2>
+           <div *ngIf="info.data.position=='left'" class="left-side">
+               <div class="macro-desc">
+                   {{info.data.desc}}
+                   <div class="food-examples">
+                       <div  class="food-example-pic-container animated rotateIn" *ngFor="let foodUrl of info.data.foods">
+                           <a href={{foodUrl}} target="_blank"><img class="food-example-pic " src={{foodUrl}} alt=""></a>
+                       </div>
+                   </div>
+               </div>
+            <img class="img-graph" src={{info.data.imgURL}} alt="">
+           </div>
+           <div *ngIf="info.data.position=='right'" class="left-side">
+            <img class="img-graph" src={{info.data.imgURL}} alt="">
+            <div class="macro-desc">
+                {{info.data.desc}}
+                <div class="food-examples">
+                    <div  class="food-example-pic-container animated rotateIn" *ngFor="let foodUrl of info.data.foods">
+                        <a href={{foodUrl}} target="_blank"><img class="food-example-pic " src={{foodUrl}} alt=""></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+       </div>
+    </div>
+</div>

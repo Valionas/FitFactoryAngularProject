@@ -6,6 +6,7 @@ import { ContactUsComponent } from './contact-us/contact-us.component';
 import { DietsComponent } from './diets/diets.component';
 import { AuthenticateGuard } from './guards/auth.activate';
 import { HomeComponent } from './home/home.component';
+import { MacronutrientsComponent } from './macronutrients/macronutrients.component';
 import { NotFoundPageComponent } from './not-found-page/not-found-page.component';
 import { PersonalCalorieCalculatorComponent } from './personal-calorie-calculator/personal-calorie-calculator.component';
 import { WorkoutTypesComponent } from './workout-types/workout-types.component';
@@ -87,6 +88,15 @@ const routes: Routes = [
     path:'workouts-types',
     component: WorkoutTypesComponent,
     canActivate:[AuthenticateGuard],
+    data:{
+      authenticated: true,
+      onFailRedirect: '/login'
+    }
+  },
+  {
+    path: "macronutrients",
+    component: MacronutrientsComponent,
+    canActivate: [AuthenticateGuard],
     data:{
       authenticated: true,
       onFailRedirect: '/login'

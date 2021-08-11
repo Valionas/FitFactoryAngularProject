@@ -97,6 +97,7 @@ export class DietsComponent implements OnInit {
 export class AddDietDialog {
   @ViewChild('dietForm') dietForm!: NgForm;
   public currentUser = localStorage.getItem('userID');
+  public currentUserEmail = localStorage.getItem('userEmail');
   public breakfastMeals: any[] = [];
   public lunchMeals: any[] = [];
   public dinnerMeals: any[] = [];
@@ -175,6 +176,7 @@ export class AddDietDialog {
       lunch: this.lunchMeals,
       dinner: this.dinnerMeals,
       createdBy: this.currentUser,
+      creator: this.currentUserEmail,
     })
   }
 }

@@ -12,7 +12,9 @@ export class FirebaseAuthService {
 
   async setUserId(){
     await this.firebaseAuth.user.subscribe((response)=>{
-      localStorage.setItem('userID',response!.uid)
+      localStorage.setItem('userID',response!.uid);
+      localStorage.setItem('userEmail',JSON.stringify(response!.email));
+      
     })
   };
 

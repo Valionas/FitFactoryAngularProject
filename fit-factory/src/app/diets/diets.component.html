@@ -1,11 +1,12 @@
 <div class="wrapper animated fadeIn">
     <h1>Diets</h1>
     <button class="dietDialog" (click)="openDietDialog()">+Add Diet</button>
-    <div class="container">
+    <div class="container" *ngIf="dietsList.length!==0">
         <div class="row">
                     <div *ngFor="let diet of dietsList">
                         <div class="diet-container">
                             <h2>{{diet.data.title}}</h2>
+                            <h3>Created by: {{diet.data.creator}}</h3>
                             <p>Duration: {{diet.data.duration}} Level: {{diet.data.level}}</p>
                             <p>{{diet.data.description}}</p>
                             <div class="meals" *ngIf="diet.data.breakfast&&diet.data.lunch&&diet.data.dinner">
