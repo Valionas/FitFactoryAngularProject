@@ -68,3 +68,25 @@ textarea{
     top:15px;
 }
 
+.cancelBtn{
+    width:100px;
+    background-color: red;
+    color:white;
+    font-family: 'Russo One', sans-serif;
+    margin-right:3px;
+}
+.cancelBtn:hover{
+    background-color: rgb(179, 76, 76);
+    transition: 1s;
+
+}
+.submitBtn{
+    width:100px;
+    background-color: #08d;
+    color:white;
+    font-family: 'Russo One', sans-serif;
+}
+.submitBtn:hover{
+    background-color: rgb(95, 181, 235);
+    transition: 1s;
+}

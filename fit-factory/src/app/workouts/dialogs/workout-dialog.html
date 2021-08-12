@@ -155,7 +155,7 @@
   </div>
 </form>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button *ngIf="!workoutForm.valid" mat-button  cdkFocusInitial>Submit</button>
-  <button *ngIf="workoutForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value,purpose.value)" cdkFocusInitial>Submit</button>
+  <button mat-button mat-dialog-close class="cancelBtn">Cancel</button>
+  <button *ngIf="!workoutForm.valid" mat-button  cdkFocusInitial class="submitBtn">Submit</button>
+  <button *ngIf="workoutForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value,purpose.value)" cdkFocusInitial class="submitBtn">Submit</button>
 </mat-dialog-actions>

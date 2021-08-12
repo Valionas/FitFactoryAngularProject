@@ -2,24 +2,40 @@ input{
     border: 1px solid black !important;
     border-radius:5px !important ;
     padding-left:10px !important;
-    width:50% !important;
+    background-color:white !important;
+    width:140%;
+}
+form{
+    padding: 10%;
+    background-color: rgba(0, 0, 0, 0.808);
+    color:white;
 }
 textarea{
-    width:52%;
+    width:100% !important;
     border: 1px solid black !important;
     border-radius:5px !important ;
     padding-left:10px !important;
+    background-color:white;
+    height:250px;
+    margin-bottom:2%;
+}
+.item-container-row{
+    width:180px;
+}
+tr{
+    background-color: white;
 }
 .input-container{
     position:relative;
     width:300px;
+    margin-right:5%;
 }
 .add-item{
     border-radius:30%;
     background-color: blue;
     color:white;
     position:absolute;
-    left:40%;
+    left:80%;
     top:15px;
 }
 .add-item:hover{
@@ -28,19 +44,28 @@ textarea{
 .add-item:active{
     background-color:red;
 }
+tr{
+    width: 350px;
+}
+td{
+    width:350px;
+}
 .mealItems{
     width:50%;
     border:1px solid black;
-    margin-left:25%;
+    margin-left:1%;
     text-align: center;
 }
 .meal-flex{
     display:flex;
-    margin-left:35%;
+    margin-left:10%;
+    margin-top:2%;
     margin-bottom:2%;
 }
 .meal-table{
-    width:400px;
+    width:350px;
+    margin-left:23%;
+    color:black;
 }
 .diet-flex-form{
     display:flex;
@@ -54,4 +79,44 @@ textarea{
     position:absolute;
     left:80%;
     top:15px;
+}
+.flex-inputs{
+    display: flex;
+}
+
+.mat-form-field-appearance-fill{
+    background-color: white;
+}
+.flex-title-content{
+    margin-top:5%;
+    margin-left:9%;
+    margin-right:8%;
+    width:300px;
+    margin-bottom: 5%;;
+}
+.meal-input{
+    width:190px;
+    background-color: white;
+}
+.cancelBtn{
+    width:100px;
+    background-color: red;
+    color:white;
+    font-family: 'Russo One', sans-serif;
+    margin-right:3px;
+}
+.cancelBtn:hover{
+    background-color: rgb(179, 76, 76);
+    transition: 1s;
+
+}
+.submitBtn{
+    width:100px;
+    background-color: #08d;
+    color:white;
+    font-family: 'Russo One', sans-serif;
+}
+.submitBtn:hover{
+    background-color: rgb(95, 181, 235);
+    transition: 1s;
 }

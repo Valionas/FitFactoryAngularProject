@@ -179,4 +179,8 @@ export class AddDietDialog {
       creator: this.currentUserEmail,
     })
   }
+
+  invalidFormHandler(){
+    Swal.fire("Opps, something went wrong?","Be sure to check all your data!","warning");
+  }
 }

@@ -53,7 +53,10 @@ ul{
     margin-left:37%;
     width: 25%;
 }
-
+.workoutDialog:hover{
+    background-color: rgb(95, 181, 235);
+    transition: 1s;
+}
 textarea{
     resize: none;
 }
@@ -62,4 +65,25 @@ textarea{
     justify-content: space-around;
     flex-wrap: wrap;
     border-top:3px solid white;
+}
+.editBtn{
+    width:100px;
+    background-color: rgb(109, 70, 109);
+    color:white;
+    font-family: 'Russo One', sans-serif;
+    margin-right:3px;
+}
+.editBtn:hover{
+    background-color: rgb(218, 120, 218);
+    transition:1s;
+}
+.deleteBtn{
+    width:100px;
+    background-color: red;
+    color:white;
+    font-family: 'Russo One', sans-serif;
+}
+.deleteBtn:hover{
+    background-color: rgb(226, 98, 98);
+    transition:1s;
 }

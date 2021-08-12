@@ -1,76 +1,102 @@
 <h2 style="color: black;">What will be your next diet?</h2>
 <form #dietForm="ngForm" class="diet-flex-form">
+  <h2>Title</h2>
   <input type="text" #title="ngModel" ngModel name="title" required placeholder="Diet Title...">
-  <input type="number" #duration="ngModel" ngModel name="duration" required placeholder="Diet Duration...">
-  <textarea rows="6" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" required placeholder="Diet description..."></textarea>
-  <mat-form-field appearance="fill" >
-    <mat-label>Diet Level</mat-label>
-    <mat-select #level="ngModel" ngModel name="level">
-      <mat-option *ngFor="let level of dietLevels" [value]="level.value">
-        {{level.viewValue}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
-  <h3>Breakfast meals:</h3>
-  <div class="meal-flex">
-    <div class="input-container">
-      <input type="text" name="breakfastMeal" ngModel #breakfastMeal="ngModel" >
-      <button class="add-item" (click)="addItem('breakfast',breakfastMeal.value)">+</button>
+  <p *ngIf="title.touched && title.errors?.required" class="showError animated zoomIn">
+    Title is required!
+  </p>
+  <div class="flex-inputs">
+    <div class="flex-title-content">
+      <h2>Duration</h2>
+      <input type="number" #duration="ngModel" ngModel name="duration" required placeholder="Diet Duration...">
+      <p *ngIf="duration.touched && duration.errors?.required" class="showError animated zoomIn">
+        Duration is required!
+      </p>
     </div>
-    <div class="meal-table">
-      <div class="content" *ngIf="breakfastMeals.length!==0">
-        <table *ngFor="let meal of breakfastMeals" class="mealItems animated slideInRight">
-          <tr>
-            <div class="item-container-row">
-              <td>{{meal}}</td>
-              <button class="remove-item" (click)="removeItem('breakfast',meal)">-</button>
-            </div>
-          </tr>
-        </table>
+    <div class="flex-title-content">
+      <h2>Level</h2>
+      <mat-form-field appearance="fill" >
+        <mat-label>Diet Level</mat-label>
+        <mat-select #level="ngModel" ngModel name="level" required>
+          <mat-option *ngFor="let level of dietLevels" [value]="level.value">
+            {{level.viewValue}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+      <p *ngIf="level.touched && level.errors?.required" class="showError animated zoomIn">
+        Level is required!
+      </p>
+    </div>
+  </div>
+  <h2>Description</h2>
+  <textarea rows="8" cols="20" draggable="false" type="text" #description="ngModel" ngModel name="description" placeholder="Diet description..."></textarea>
+  <div class="meal-container">
+
+    <h2>Breakfast meals:</h2>
+    <div class="meal-flex">
+      <div class="input-container">
+        <input type="text" name="breakfastMeal" ngModel #breakfastMeal="ngModel" class="meal-input" >
+        <button class="add-item" (click)="addItem('breakfast',breakfastMeal.value)">+</button>
+      </div>
+      <div class="meal-table">
+        <div class="content" *ngIf="breakfastMeals.length!==0">
+          <table *ngFor="let meal of breakfastMeals" class="mealItems animated slideInRight">
+            <tr>
+              <div class="item-container-row">
+                <td>{{meal}}</td>
+                <button class="remove-item" (click)="removeItem('breakfast',meal)">-</button>
+              </div>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-  <h3>Lunch meals</h3>
-  <div class="meal-flex">
-    <div class="input-container">
-      <input type="text" name="lunchMeal" ngModel #lunchMeal="ngModel">
-      <button class="add-item" (click)="addItem('lunch',lunchMeal.value)" >+</button>
-    </div>
-    <div class="meal-table" >
-      <div class="content" *ngIf="lunchMeals.length!==0">
-        <table *ngFor="let meal of lunchMeals" class="mealItems animated slideInRight">
-          <tr>
-            <div class="item-container-row">
-              <td>{{meal}}</td>
-              <button class="remove-item" (click)="removeItem('lunch',meal)">-</button>
-            </div>
-          </tr>
-        </table>
+  <div class="meal-container">
+    <h2>Lunch meals</h2>
+    <div class="meal-flex">
+      <div class="input-container">
+        <input type="text" name="lunchMeal" ngModel #lunchMeal="ngModel" class="meal-input">
+        <button class="add-item" (click)="addItem('lunch',lunchMeal.value)" >+</button>
+      </div>
+      <div class="meal-table" >
+        <div class="content" *ngIf="lunchMeals.length!==0">
+          <table *ngFor="let meal of lunchMeals" class="mealItems animated slideInRight">
+            <tr>
+              <div class="item-container-row">
+                <td>{{meal}}</td>
+                <button class="remove-item" (click)="removeItem('lunch',meal)">-</button>
+              </div>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
-  <h3>Dinner meals</h3>
-  <div class="meal-flex">
-    <div class="input-container">
-      <input type="text" name="dinnerMeal" ngModel #dinnerMeal="ngModel" >
-      <button class="add-item" (click)="addItem('dinner',dinnerMeal.value)">+</button>
-    </div>
-    <div class="meal-table" >
-      <div class="content" *ngIf="dinnerMeals.length!==0">
-        <table *ngFor="let meal of dinnerMeals" class="mealItems animated slideInRight">
-          <tr>
-            <div class="item-container-row">
-              <td>{{meal}}</td>
-              <button class="remove-item" (click)="removeItem('dinner',meal)">-</button>
-            </div>
-          </tr>
-        </table>
+  <div class="meal-container">
+    <h2>Dinner meals</h2>
+    <div class="meal-flex">
+      <div class="input-container">
+        <input type="text" name="dinnerMeal" ngModel #dinnerMeal="ngModel" class="meal-input">
+        <button class="add-item" (click)="addItem('dinner',dinnerMeal.value)">+</button>
+      </div>
+      <div class="meal-table" >
+        <div class="content" *ngIf="dinnerMeals.length!==0">
+          <table *ngFor="let meal of dinnerMeals" class="mealItems animated slideInRight">
+            <tr>
+              <div class="item-container-row">
+                <td>{{meal}}</td>
+                <button class="remove-item" (click)="removeItem('dinner',meal)">-</button>
+              </div>
+            </tr>
+          </table>
+        </div>
       </div>
     </div>
   </div>
 </form>
 <mat-dialog-actions align="end">
-  <button mat-button mat-dialog-close>Cancel</button>
-  <button *ngIf="!dietForm.valid" mat-button  cdkFocusInitial>Submit</button>
-  <button *ngIf="dietForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value, duration.value)" cdkFocusInitial>Submit</button>
+  <button mat-button mat-dialog-close class="cancelBtn">Cancel</button>
+  <button *ngIf="!dietForm.valid" mat-button (click)="invalidFormHandler()" cdkFocusInitial class="submitBtn">Submit</button>
+  <button *ngIf="dietForm.valid" mat-button [mat-dialog-close]="sendObj(title.value,description.value,level.value, duration.value)" cdkFocusInitial class="submitBtn">Submit</button>
 </mat-dialog-actions>

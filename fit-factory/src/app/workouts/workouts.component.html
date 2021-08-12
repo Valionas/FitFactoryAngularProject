@@ -54,8 +54,8 @@
                                 </div>
                             </div>  
                             <div *ngIf="workout.data.createdBy==currentUser">
-                                <button (click)="editWorkoutDialog(workout.id)">Edit</button>
-                                <button (click)="deleteWorkout(workout.id)">Delete</button>
+                                <button class="editBtn" (click)="editWorkoutDialog(workout.id)">Edit</button>
+                                <button class="deleteBtn" (click)="deleteWorkout(workout.id)">Delete</button>
                             </div>
                         </div>
                     </div>
