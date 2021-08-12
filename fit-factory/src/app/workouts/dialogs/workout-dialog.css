@@ -2,24 +2,40 @@ input{
     border: 1px solid black !important;
     border-radius:5px !important ;
     padding-left:10px !important;
-    width:70% !important;
+    width:100% !important;
+    background-color: white !important;
+}
+form{
+    padding: 10%;
+    background-color: rgba(0, 0, 0, 0.808);
+    color:white;
 }
 textarea{
-    width:71%;
+    width:100% !important;
     border: 1px solid black !important;
     border-radius:5px !important ;
     padding-left:10px !important;
+    background-color:white;
+    height:250px;
+    margin-bottom:2%;
 }
 .input-container{
     position:relative;
-    width:300px;
+    width:240px;
+    margin-left:-4%;
+}
+tr{
+    background-color: white;
+}
+.mat-form-field-appearance-fill{
+    background-color: white;
 }
 .add-item{
     border-radius:30%;
     background-color: blue;
     color:white;
     position:absolute;
-    left:60%;
+    left:92%;
     top:15px;
 }
 .add-item:hover{
@@ -41,6 +57,8 @@ textarea{
 }
 .workout-table{
     width:400px;
+    margin-left:5%;
+    color:black;
 }
 .workout-flex-form{
     display:flex;
@@ -54,6 +72,11 @@ textarea{
     display:flex;
     justify-content: space-around;
     margin-top:5%;
+    margin-left:8%;
+    margin-bottom:5%;
+}
+.select-item{
+    margin-right:8%;
 }
 .item-container-row{
     position:relative;
@@ -89,4 +112,8 @@ textarea{
 .submitBtn:hover{
     background-color: rgb(95, 181, 235);
     transition: 1s;
+}
+.workout-input{
+    width:190px;
+    background-color: white;
 }

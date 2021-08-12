@@ -15,9 +15,18 @@ h2{
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: black;
 }
-
+h3{
+    font-family: 'Russo One', sans-serif;
+    text-align: center;
+    font-size:20px;
+    color:white;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: black;
+    
+}
 .container{
     background-color: rgba(0,0,0,.5);
+    width:100%;
     color:white;
     border-radius:1%;
     text-align: justify;
@@ -86,4 +95,29 @@ textarea{
 .deleteBtn:hover{
     background-color: rgb(226, 98, 98);
     transition:1s;
+}
+.workout-desc{
+    background-color: rgba(255, 255, 255, 0.897);
+    border:3px solid black;
+    outline: 3px solid white;
+    padding:10%;
+    text-align: justify;
+    margin-bottom:5%;
+}
+.workout-desc>p{
+    color:black;
+}
+.workout-desc>h2{
+    color:black;
+}
+.actions{
+    margin-top:5%;
+}
+.day-workout-container{
+    border:2px solid white;
+    padding:5%;
+    padding-top:0;
+}
+table{
+    text-align: left;
 }

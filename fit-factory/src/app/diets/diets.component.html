@@ -10,30 +10,31 @@
                             <h3>Level:  {{diet.data.level}} </h3>
                            
                             <div class="diet-desc">
-                                <h2>Description</h2>
+                                <p><b>Description</b></p>
                                 <p>{{diet.data.description}}</p>
+                                <p style="text-align:right;margin-top:2%;margin-bottom:2%;color:black"><b>Written by <i>{{diet.data.creator}}</i></b></p>
+
                             </div>
                             <div class="meals" *ngIf="diet.data.breakfast&&diet.data.lunch&&diet.data.dinner">
                                 <div *ngIf="diet.data.breakfast" class="meal-type-container"> 
                                     <h2>Breakfast</h2>
-                                    <table *ngFor="let exercise of diet.data.breakfast">                         
-                                                {{exercise}}       
+                                    <table *ngFor="let meal of diet.data.breakfast">                         
+                                                {{meal}}       
                                     </table>
                                 </div>
                                 <div *ngIf="diet.data.lunch" class="meal-type-container"> 
                                     <h2>Lunch</h2>
-                                    <table *ngFor="let exercise of diet.data.lunch">                         
-                                                {{exercise}}       
+                                    <table *ngFor="let meal of diet.data.lunch">                         
+                                                {{meal}}       
                                     </table>
                                 </div>
                                 <div *ngIf="diet.data.dinner" class="meal-type-container"> 
                                     <h2>Dinner</h2>
-                                    <table *ngFor="let exercise of diet.data.dinner">                         
-                                                {{exercise}}       
+                                    <table *ngFor="let meal of diet.data.dinner">                         
+                                                {{meal}}       
                                     </table>
                                 </div>
-                            </div>  
-                            <h3 style="text-align:right;margin-top:2%;margin-bottom:2%">Created by: <i>{{diet.data.creator}}</i></h3>       
+                            </div>       
                             <div *ngIf="diet.data.createdBy==currentUser" class="actions">
                                 <button class="editBtn" (click)="editDietDialog(diet.id)">Edit</button>
                                 <button class="deleteBtn" (click)="deleteDiet(diet.id)">Delete</button>

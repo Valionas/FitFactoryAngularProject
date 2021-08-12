@@ -112,11 +112,8 @@ export class AddWorkoutDialog {
 
   ngOnInit() {
     if (this.data) {
-      let workout = this.data.data;
+      let workout = this.data.data; 
       setTimeout(() => {
-        this.workoutForm.controls["title"].setValue(workout.title);
-        this.workoutForm.controls["description"].setValue(workout.description);
-        this.workoutForm.controls["level"].setValue(workout.level);
         this.mondayExercises = workout.monday;
         this.tuesdayExercises = workout.tuesday;
         this.wednesdayExercises = workout.wednesday;
@@ -124,6 +121,9 @@ export class AddWorkoutDialog {
         this.fridayExercises = workout.friday;
         this.saturdayExercises = workout.saturday;
         this.sundayExercises = workout.sunday;
+        this.workoutForm.controls["title"].setValue(workout.title);
+        this.workoutForm.controls["description"].setValue(workout.description);
+        this.workoutForm.controls["level"].setValue(workout.level);
       });
     }
   }
@@ -228,6 +228,10 @@ export class AddWorkoutDialog {
       createdBy: this.currentUser,
       creator: this.currentUserEmail,
     })
+  }
+
+  invalidFormHandler(){
+    Swal.fire("Opps, something went wrong?","Be sure to check all your data!","warning");
   }
 }
 
