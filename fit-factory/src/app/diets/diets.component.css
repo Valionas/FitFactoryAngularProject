@@ -121,6 +121,10 @@ textarea{
 .meal-type-container{
     border:2px solid white;
     padding:5%;
+    padding-top:0;
+    border-radius:15px;
+    width:240px;
+    margin:1%;
 }
 table{
     text-align: left;
