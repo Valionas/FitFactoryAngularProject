@@ -5,6 +5,17 @@
         <div class="row">
                     <div *ngFor="let workout of workoutsList">
                         <div class="workout-container">
+                            <div class="votes">
+                                <div class="upvote">
+                                    <i (click)="upvoteHandler(workout.id)"class="fas fa-arrow-circle-up"></i>
+                                </div>
+                                <div class="number-votes">
+                                    <p>{{workout.data.votes}}</p>
+                                </div>
+                                <div class="downvote">
+                                    <i (click)="downvoteHandler(workout.id)" class="fas fa-arrow-circle-down"></i>
+                                </div>
+                            </div>
                             <h2>{{workout.data.title}}</h2>
                             <h3>Level:  {{workout.data.level}} </h3>
                             <div class="workout-desc">
@@ -13,43 +24,43 @@
                                 <p style="text-align:right;margin-top:2%;margin-bottom:2%;color:black"><b>Written by <i>{{workout.data.creator}}</i></b></p>
                             </div>
                             <div class="weekly-plan" *ngIf="workout.data.monday||workout.data.tuesday||workout.data.wednesday||workout.data.thursday||workout.data.friday">
-                                <div *ngIf="workout.data.monday" class="day-workout-container"> 
+                                <div *ngIf="workout.data.monday !== undefined && workout.data.monday.length !==0" class="day-workout-container"> 
                                     <h2>Monday</h2>
                                     <table *ngFor="let exercise of workout.data.monday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.tuesday" class="day-workout-container" > 
+                                <div *ngIf="workout.data.tuesday !== undefined && workout.data.tuesday.length !== 0" class="day-workout-container" > 
                                     <h2>Tuesday</h2>
                                     <table *ngFor="let exercise of workout.data.tuesday" >                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.wednesday" class="day-workout-container"> 
+                                <div *ngIf="workout.data.wednesday !== undefined && workout.data.wednesday.length !== 0" class="day-workout-container"> 
                                     <h2>Wednesday</h2>
                                     <table *ngFor="let exercise of workout.data.wednesday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.thursday" class="day-workout-container"> 
+                                <div *ngIf="workout.data.thursday !== undefined && workout.data.thursday.length !== 0" class="day-workout-container"> 
                                     <h2>Thursday</h2>
                                     <table *ngFor="let exercise of workout.data.thursday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.friday" class="day-workout-container"> 
+                                <div *ngIf="workout.data.friday !== undefined && workout.data.friday.length !== 0" class="day-workout-container"> 
                                     <h2>Friday</h2>
                                     <table *ngFor="let exercise of workout.data.friday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.saturday" class="day-workout-container"> 
+                                <div *ngIf="workout.data.saturday !== undefined && workout.data.saturday.length !== 0" class="day-workout-container"> 
                                     <h2>Saturday</h2>
                                     <table *ngFor="let exercise of workout.data.saturday">                         
                                                 {{exercise}}       
                                     </table>
                                 </div>
-                                <div *ngIf="workout.data.sunday" class="day-workout-container"> 
+                                <div *ngIf="workout.data.sunday !== undefined && workout.data.sunday.length !== 0" class="day-workout-container"> 
                                     <h2>Sunday</h2>
                                     <table *ngFor="let exercise of workout.data.sunday">                         
                                                 {{exercise}}       

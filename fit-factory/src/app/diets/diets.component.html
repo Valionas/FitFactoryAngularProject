@@ -5,6 +5,17 @@
         <div class="row">
                     <div *ngFor="let diet of dietsList">
                         <div class="diet-container">
+                            <div class="votes">
+                                <div class="upvote">
+                                    <i (click)="upvoteHandler(diet.id)"class="fas fa-arrow-circle-up"></i>
+                                </div>
+                                <div class="number-votes">
+                                    <p>{{diet.data.votes}}</p>
+                                </div>
+                                <div class="downvote">
+                                    <i (click)="downvoteHandler(diet.id)" class="fas fa-arrow-circle-down"></i>
+                                </div>
+                            </div>
                             <h2>{{diet.data.title}}</h2>
                             <h3>Duration:  {{diet.data.duration}} days</h3>
                             <h3>Level:  {{diet.data.level}} </h3>

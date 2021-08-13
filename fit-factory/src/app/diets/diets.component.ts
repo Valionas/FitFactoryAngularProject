@@ -63,14 +63,14 @@ export class DietsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         Swal.fire('Success!', 'Your diet has been created', 'success');
-        this.dietService.addItem('diets',result).then();
+        this.dietService.addItem('diets', result).then();
       }
     });
 
   }
 
-  editDietDialog(dietId:string){
-    var diet = this.dietsList.find(x => x.id == dietId);  
+  editDietDialog(dietId: string) {
+    var diet = this.dietsList.find(x => x.id == dietId);
     const dialogRef = this.dialog.open(AddDietDialog, {
       autoFocus: false,
       maxHeight: '90vh',
@@ -81,10 +81,45 @@ export class DietsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         Swal.fire('Success!', 'Your diet has been updated!', 'success');
-        this.dietService.updateItem('diets',result,dietId).then();
+        this.dietService.updateItem('diets', result, dietId).then();
       }
     });
-  
+
+  }
+
+  upvoteHandler(dietId: string) {
+    let diet = this.dietsList.find(x => x.id === dietId);
+    if (!diet.data.voters.includes(this.currentUser)) {
+      diet.data.voters.push(this.currentUser);
+      let indexToClear = diet.data.downvoters.indexOf(this.currentUser);
+      diet.data.downvoters.splice(indexToClear, 1);
+      diet.data.votes += 1;
+      if (diet.data.votes === 0) {
+        let index = diet.data.voters.indexOf(this.currentUser);
+        diet.data.voters.splice(index, 1);
+      }
+      this.dietService.updateItem('diets', diet.data, dietId);
+    } else {
+      Swal.fire('Hold there, rookie!', 'It seems like you adore this post, but  one like per post..', 'warning');
+    }
+
+  }
+  downvoteHandler(dietId: string) {
+    let diet = this.dietsList.find(x => x.id === dietId);
+    if (!diet.data.downvoters.includes(this.currentUser)) {
+      diet.data.downvoters.push(this.currentUser);
+      let indexToClear = diet.data.voters.indexOf(this.currentUser);
+      diet.data.voters.splice(indexToClear, 1);
+      diet.data.votes -= 1;
+      if (diet.data.votes === 0) {
+        let index = diet.data.downvoters.indexOf(this.currentUser);
+        diet.data.downvoters.splice(index, 1);
+      }
+      this.dietService.updateItem('diets', diet.data, dietId);
+    } else {
+      Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning')
+    }
+
   }
 }
 
@@ -101,20 +136,26 @@ export class AddDietDialog {
   public breakfastMeals: any[] = [];
   public lunchMeals: any[] = [];
   public dinnerMeals: any[] = [];
-  
-  constructor( @Inject(MAT_DIALOG_DATA) public data: any){}
+  public voters = [];
+  public downvoters = [];
+  public votes: number = 0;
 
-  ngOnInit(){
-    if(this.data){ 
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
+
+  ngOnInit() {
+    if (this.data) {
       let dietInfo = this.data.data;
-      setTimeout(() => { 
+      setTimeout(() => {
         this.dietForm.controls["title"].setValue(dietInfo.title);
         this.dietForm.controls["duration"].setValue(dietInfo.duration);
         this.dietForm.controls["description"].setValue(dietInfo.description);
         this.dietForm.controls["level"].setValue(dietInfo.level);
         this.breakfastMeals = dietInfo.breakfast;
         this.lunchMeals = dietInfo.lunch;
-        this.dinnerMeals = dietInfo.dinner;    
+        this.dinnerMeals = dietInfo.dinner;
+        this.votes = dietInfo.votes;
+        this.voters = dietInfo.voters;
+        this.downvoters = dietInfo.downvoters;
       });
     }
   }
@@ -144,21 +185,21 @@ export class AddDietDialog {
     }
   }
 
-  removeItem(category:string,item:string){
-    switch(category){
+  removeItem(category: string, item: string) {
+    switch (category) {
       case "breakfast":
         let breakfastIndex = this.breakfastMeals.indexOf(item);
-        this.breakfastMeals.splice(breakfastIndex,1);
+        this.breakfastMeals.splice(breakfastIndex, 1);
         break;
       case "lunch":
         let lunchIndex = this.lunchMeals.indexOf(item);
-        this.lunchMeals.splice(lunchIndex,1);
+        this.lunchMeals.splice(lunchIndex, 1);
         break;
       case "dinner":
         let dinnerIndex = this.dinnerMeals.indexOf(item);
-        this.dinnerMeals.splice(dinnerIndex,1);
-        break;   
-  }
+        this.dinnerMeals.splice(dinnerIndex, 1);
+        break;
+    }
   }
   public dietLevels: DietLevels[] = [
     { value: 'Beginner', viewValue: 'Rookie' },
@@ -166,7 +207,7 @@ export class AddDietDialog {
     { value: 'Intermediate', viewValue: 'Fit-Commander' }
   ];
 
-  sendObj(title: string, description: string, level: string, duration:string) {
+  sendObj(title: string, description: string, level: string, duration: string) {
     return ({
       title,
       description,
@@ -177,10 +218,13 @@ export class AddDietDialog {
       dinner: this.dinnerMeals,
       createdBy: this.currentUser,
       creator: this.currentUserEmail,
+      votes: this.votes,
+      voters: this.voters,
+      downvoters: this.downvoters,
     })
   }
 
-  invalidFormHandler(){
-    Swal.fire("Opps, something went wrong?","Be sure to check all your data!","warning");
+  invalidFormHandler() {
+    Swal.fire("Opps, something went wrong?", "Be sure to check all your data!", "warning");
   }
 }

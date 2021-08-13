@@ -84,7 +84,41 @@ export class WorkoutsComponent implements OnInit {
         this.workoutService.updateItem('workouts',result,workoutId).then();
       }
     });
+  }
+
+  upvoteHandler(workoutId:string){
+    let workout = this.workoutsList.find(x => x.id === workoutId);
+    if(!workout.data.voters.includes(this.currentUser)){
+      workout.data.voters.push(this.currentUser);
+      let indexToClear = workout.data.downvoters.indexOf(this.currentUser);
+      workout.data.downvoters.splice(indexToClear,1);
+      workout.data.votes+=1;
+      if(workout.data.votes == 0){
+        let index = workout.data.voters.indexOf(this.currentUser);
+        workout.data.voters.splice(index, 1);
+      }
+      this.workoutService.updateItem('workouts',workout.data,workoutId);
+    }else{
+      Swal.fire('Hold there, rookie!','It seems like you adore this post, but  one like per post..','warning');
+    }
   
+  }
+  downvoteHandler(workoutId:string){
+    let workout = this.workoutsList.find(x => x.id === workoutId);
+    if(!workout.data.downvoters.includes(this.currentUser)){
+      workout.data.downvoters.push(this.currentUser);
+      let indexToClear = workout.data.voters.indexOf(this.currentUser);
+      workout.data.voters.splice(indexToClear,1);
+      workout.data.votes-=1;
+      if(workout.data.votes == 0){
+        let index = workout.data.downvoters.indexOf(this.currentUser);
+        workout.data.downvoters.splice(index, 1);
+      }
+      this.workoutService.updateItem('workouts',workout.data,workoutId);
+    }else{
+      Swal.fire("Now now ...",'Do not be too harsh on the author ...','warning');
+    }
+    
   }
 }
 
@@ -106,7 +140,9 @@ export class AddWorkoutDialog {
   public fridayExercises: any[] = [];
   public saturdayExercises: any[] = [];
   public sundayExercises: any[] = [];
-
+  public voters = [];
+  public downvoters = [];
+  public votes: number = 0;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
 
@@ -124,6 +160,9 @@ export class AddWorkoutDialog {
         this.workoutForm.controls["title"].setValue(workout.title);
         this.workoutForm.controls["description"].setValue(workout.description);
         this.workoutForm.controls["level"].setValue(workout.level);
+        this.votes = workout.votes;
+        this.voters = workout.voters;
+        this.downvoters = workout.downvoters;
       });
     }
   }
@@ -227,6 +266,9 @@ export class AddWorkoutDialog {
       sunday:this.sundayExercises,
       createdBy: this.currentUser,
       creator: this.currentUserEmail,
+      votes:this.votes,
+      voters:this.voters,
+      downvoters:this.downvoters,
     })
   }
 

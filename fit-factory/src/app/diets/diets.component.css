@@ -129,3 +129,19 @@ textarea{
 table{
     text-align: left;
 }
+.votes{
+    display:flex;
+    flex-direction: column;
+    color:white;
+    position:absolute;
+    font-size:25px;
+    padding:1%;
+}
+.number-votes{
+    margin-top:50%;
+    margin-bottom:1%;
+}
+.fas:hover{
+    transition:1s;
+    color: blue;
+}
