@@ -165,12 +165,15 @@ export class AddDietDialog {
       switch (category) {
         case "breakfast":
           this.breakfastMeals.push(item);
+          this.dietForm.controls["breakfastMeal"].setValue("");
           break;
         case "lunch":
           this.lunchMeals.push(item);
+          this.dietForm.controls["lunchMeal"].setValue("");
           break;
         case "dinner":
           this.dinnerMeals.push(item);
+          this.dietForm.controls["dinnerMeal"].setValue("");
           break;
         default:
           break;

@@ -69,8 +69,8 @@ export class WorkoutsComponent implements OnInit {
 
   }
 
-  editWorkoutDialog(workoutId:string){
-    var workout = this.workoutsList.find(x => x.id == workoutId);  
+  editWorkoutDialog(workoutId: string) {
+    var workout = this.workoutsList.find(x => x.id == workoutId);
     const dialogRef = this.dialog.open(AddWorkoutDialog, {
       autoFocus: false,
       maxHeight: '90vh',
@@ -81,44 +81,44 @@ export class WorkoutsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         Swal.fire('Success!', 'You have successfully updated your workout plan!', 'success');
-        this.workoutService.updateItem('workouts',result,workoutId).then();
+        this.workoutService.updateItem('workouts', result, workoutId).then();
       }
     });
   }
 
-  upvoteHandler(workoutId:string){
+  upvoteHandler(workoutId: string) {
     let workout = this.workoutsList.find(x => x.id === workoutId);
-    if(!workout.data.voters.includes(this.currentUser)){
+    if (!workout.data.voters.includes(this.currentUser)) {
       workout.data.voters.push(this.currentUser);
       let indexToClear = workout.data.downvoters.indexOf(this.currentUser);
-      workout.data.downvoters.splice(indexToClear,1);
-      workout.data.votes+=1;
-      if(workout.data.votes == 0){
+      workout.data.downvoters.splice(indexToClear, 1);
+      workout.data.votes += 1;
+      if (workout.data.votes == 0) {
         let index = workout.data.voters.indexOf(this.currentUser);
         workout.data.voters.splice(index, 1);
       }
-      this.workoutService.updateItem('workouts',workout.data,workoutId);
-    }else{
-      Swal.fire('Hold there, rookie!','It seems like you adore this post, but  one like per post..','warning');
+      this.workoutService.updateItem('workouts', workout.data, workoutId);
+    } else {
+      Swal.fire('Hold there, rookie!', 'It seems like you adore this post, but  one like per post..', 'warning');
     }
-  
+
   }
-  downvoteHandler(workoutId:string){
+  downvoteHandler(workoutId: string) {
     let workout = this.workoutsList.find(x => x.id === workoutId);
-    if(!workout.data.downvoters.includes(this.currentUser)){
+    if (!workout.data.downvoters.includes(this.currentUser)) {
       workout.data.downvoters.push(this.currentUser);
       let indexToClear = workout.data.voters.indexOf(this.currentUser);
-      workout.data.voters.splice(indexToClear,1);
-      workout.data.votes-=1;
-      if(workout.data.votes == 0){
+      workout.data.voters.splice(indexToClear, 1);
+      workout.data.votes -= 1;
+      if (workout.data.votes == 0) {
         let index = workout.data.downvoters.indexOf(this.currentUser);
         workout.data.downvoters.splice(index, 1);
       }
-      this.workoutService.updateItem('workouts',workout.data,workoutId);
-    }else{
-      Swal.fire("Now now ...",'Do not be too harsh on the author ...','warning');
+      this.workoutService.updateItem('workouts', workout.data, workoutId);
+    } else {
+      Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning');
     }
-    
+
   }
 }
 
@@ -126,7 +126,7 @@ export class WorkoutsComponent implements OnInit {
 @Component({
   selector: 'workout-content-example-dialog',
   templateUrl: 'dialogs/workout-dialog.html',
-  styleUrls: ['./workouts.component.css', '../animation.css','dialogs/workout-dialog.css']
+  styleUrls: ['./workouts.component.css', '../animation.css', 'dialogs/workout-dialog.css']
 })
 export class AddWorkoutDialog {
   @ViewChild('workoutForm') workoutForm!: NgForm;
@@ -148,7 +148,7 @@ export class AddWorkoutDialog {
 
   ngOnInit() {
     if (this.data) {
-      let workout = this.data.data; 
+      let workout = this.data.data;
       setTimeout(() => {
         this.mondayExercises = workout.monday;
         this.tuesdayExercises = workout.tuesday;
@@ -172,24 +172,31 @@ export class AddWorkoutDialog {
       switch (category) {
         case "monday":
           this.mondayExercises.push(item);
+          this.workoutForm.controls["monday"].setValue("");
           break;
         case "tuesday":
           this.tuesdayExercises.push(item);
+          this.workoutForm.controls["tuesday"].setValue("");
           break;
         case "wednesday":
           this.wednesdayExercises.push(item);
+          this.workoutForm.controls["wednesday"].setValue("");
           break;
         case "thursday":
           this.thursdayExercises.push(item);
+          this.workoutForm.controls["thursday"].setValue("");
           break;
         case "friday":
           this.fridayExercises.push(item);
+          this.workoutForm.controls["friday"].setValue("");
           break;
         case "saturday":
           this.saturdayExercises.push(item);
+          this.workoutForm.controls["saturday"].setValue("");
           break;
         case "sunday":
           this.sundayExercises.push(item);
+          this.workoutForm.controls["sunday"].setValue("");
           break;
         default:
           break;
@@ -204,38 +211,38 @@ export class AddWorkoutDialog {
     }
   }
 
-  removeItem(category:string,item:string){
-    switch(category){
+  removeItem(category: string, item: string) {
+    switch (category) {
       case "monday":
         let mondayExIndex = this.mondayExercises.indexOf(item);
-        this.mondayExercises.splice(mondayExIndex,1);
+        this.mondayExercises.splice(mondayExIndex, 1);
         break;
       case "tuesday":
         let tuesdayExIndex = this.tuesdayExercises.indexOf(item);
-        this.tuesdayExercises.splice(tuesdayExIndex,1);
+        this.tuesdayExercises.splice(tuesdayExIndex, 1);
         break;
       case "wednesday":
         let wednesdayExIndex = this.wednesdayExercises.indexOf(item);
-        this.wednesdayExercises.splice(wednesdayExIndex,1);
+        this.wednesdayExercises.splice(wednesdayExIndex, 1);
         break;
       case "thursday":
         let thursdayExIndex = this.thursdayExercises.indexOf(item);
-        this.thursdayExercises.splice(thursdayExIndex,1);
+        this.thursdayExercises.splice(thursdayExIndex, 1);
         break;
       case "friday":
         let fridayExIndex = this.fridayExercises.indexOf(item);
-        this.fridayExercises.splice(fridayExIndex,1);
+        this.fridayExercises.splice(fridayExIndex, 1);
         break;
       case "saturday":
         let saturdayExIndex = this.saturdayExercises.indexOf(item);
-        this.saturdayExercises.splice(saturdayExIndex,1);
+        this.saturdayExercises.splice(saturdayExIndex, 1);
         break;
       case "sunday":
         let sundayExIndex = this.sundayExercises.indexOf(item);
-        this.sundayExercises.splice(sundayExIndex,1);
+        this.sundayExercises.splice(sundayExIndex, 1);
         break;
     }
-    
+
   }
   public workoutLevels: WorkoutLevels[] = [
     { value: 'Beginner', viewValue: 'Rookie (Beginner)' },
@@ -251,29 +258,29 @@ export class AddWorkoutDialog {
     'Endurance',
     'Competition'
   ]
-  sendObj(title: string, description: string, level: string, purpose:string) {
+  sendObj(title: string, description: string, level: string, purpose: string) {
     return ({
       title,
       description,
       level,
       purpose,
-      monday:this.mondayExercises,
-      tuesday:this.tuesdayExercises,
-      wednesday:this.wednesdayExercises,
-      thursday:this.thursdayExercises,
-      friday:this.fridayExercises,
-      saturday:this.saturdayExercises,
-      sunday:this.sundayExercises,
+      monday: this.mondayExercises,
+      tuesday: this.tuesdayExercises,
+      wednesday: this.wednesdayExercises,
+      thursday: this.thursdayExercises,
+      friday: this.fridayExercises,
+      saturday: this.saturdayExercises,
+      sunday: this.sundayExercises,
       createdBy: this.currentUser,
       creator: this.currentUserEmail,
-      votes:this.votes,
-      voters:this.voters,
-      downvoters:this.downvoters,
+      votes: this.votes,
+      voters: this.voters,
+      downvoters: this.downvoters,
     })
   }
 
-  invalidFormHandler(){
-    Swal.fire("Opps, something went wrong?","Be sure to check all your data!","warning");
+  invalidFormHandler() {
+    Swal.fire("Opps, something went wrong?", "Be sure to check all your data!", "warning");
   }
 }
 
