@@ -88,37 +88,34 @@ export class WorkoutsComponent implements OnInit {
 
   upvoteHandler(workoutId: string) {
     let workout = this.workoutsList.find(x => x.id === workoutId);
-    if (!workout.data.voters.includes(this.currentUser)) {
-      workout.data.voters.push(this.currentUser);
+    if(workout.data.downvoters.includes(this.currentUser)){
       let indexToClear = workout.data.downvoters.indexOf(this.currentUser);
       workout.data.downvoters.splice(indexToClear, 1);
       workout.data.votes += 1;
-      if (workout.data.votes == 0) {
-        let index = workout.data.voters.indexOf(this.currentUser);
-        workout.data.voters.splice(index, 1);
-      }
       this.workoutService.updateItem('workouts', workout.data, workoutId);
-    } else {
-      Swal.fire('Hold there, rookie!', 'It seems like you adore this post, but  one like per post..', 'warning');
+    }else if(!workout.data.voters.includes(this.currentUser)){
+      workout.data.voters.push(this.currentUser);
+      workout.data.votes += 1;
+      this.workoutService.updateItem('workouts', workout.data, workoutId);
+    }else{
+      Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning');
     }
 
   }
   downvoteHandler(workoutId: string) {
     let workout = this.workoutsList.find(x => x.id === workoutId);
-    if (!workout.data.downvoters.includes(this.currentUser)) {
-      workout.data.downvoters.push(this.currentUser);
+    if(workout.data.voters.includes(this.currentUser)){
       let indexToClear = workout.data.voters.indexOf(this.currentUser);
       workout.data.voters.splice(indexToClear, 1);
       workout.data.votes -= 1;
-      if (workout.data.votes == 0) {
-        let index = workout.data.downvoters.indexOf(this.currentUser);
-        workout.data.downvoters.splice(index, 1);
-      }
       this.workoutService.updateItem('workouts', workout.data, workoutId);
-    } else {
+    }else if(!workout.data.downvoters.includes(this.currentUser)){
+      workout.data.downvoters.push(this.currentUser);
+      workout.data.votes -= 1;
+      this.workoutService.updateItem('workouts', workout.data, workoutId);
+    }else{
       Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning');
     }
-
   }
 }
 

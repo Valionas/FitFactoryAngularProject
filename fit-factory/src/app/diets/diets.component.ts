@@ -89,37 +89,33 @@ export class DietsComponent implements OnInit {
 
   upvoteHandler(dietId: string) {
     let diet = this.dietsList.find(x => x.id === dietId);
-    if (!diet.data.voters.includes(this.currentUser)) {
-      diet.data.voters.push(this.currentUser);
+    if(diet.data.downvoters.includes(this.currentUser)){
       let indexToClear = diet.data.downvoters.indexOf(this.currentUser);
       diet.data.downvoters.splice(indexToClear, 1);
       diet.data.votes += 1;
-      if (diet.data.votes === 0) {
-        let index = diet.data.voters.indexOf(this.currentUser);
-        diet.data.voters.splice(index, 1);
-      }
       this.dietService.updateItem('diets', diet.data, dietId);
-    } else {
-      Swal.fire('Hold there, rookie!', 'It seems like you adore this post, but  one like per post..', 'warning');
+    }else if(!diet.data.voters.includes(this.currentUser)){
+      diet.data.voters.push(this.currentUser);
+      diet.data.votes += 1;
+      this.dietService.updateItem('diets', diet.data, dietId);
+    }else{
+      Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning');
     }
-
   }
   downvoteHandler(dietId: string) {
     let diet = this.dietsList.find(x => x.id === dietId);
-    if (!diet.data.downvoters.includes(this.currentUser)) {
-      diet.data.downvoters.push(this.currentUser);
+    if(diet.data.voters.includes(this.currentUser)){
       let indexToClear = diet.data.voters.indexOf(this.currentUser);
       diet.data.voters.splice(indexToClear, 1);
       diet.data.votes -= 1;
-      if (diet.data.votes === 0) {
-        let index = diet.data.downvoters.indexOf(this.currentUser);
-        diet.data.downvoters.splice(index, 1);
-      }
       this.dietService.updateItem('diets', diet.data, dietId);
-    } else {
-      Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning')
+    }else if(!diet.data.downvoters.includes(this.currentUser)){
+      diet.data.downvoters.push(this.currentUser);
+      diet.data.votes -= 1;
+      this.dietService.updateItem('diets', diet.data, dietId);
+    }else{
+      Swal.fire("Now now ...", 'Do not be too harsh on the author ...', 'warning');
     }
-
   }
 }
 
