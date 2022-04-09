@@ -4,10 +4,7 @@ import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { NgForm } from '@angular/forms';
-interface DietLevels {
-  value: string;
-  viewValue: string;
-}
+
 
 @Component({
   selector: 'app-diets',
@@ -17,19 +14,20 @@ interface DietLevels {
 export class DietsComponent implements OnInit {
 
 
-  public currentUser = localStorage.getItem('userID');
-  public dietsList: any[] = [];
+  public currentUser = localStorage.getItem('userID')!;
+  public dietsList: IFirebaseCollection[] = [];
   constructor(private dietService: CRUDService, private fireAuth: FirebaseAuthService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.getDiets();
   }
-
+ 
   getDiets(): void {
     this.dietService.getItems('diets').subscribe((res) => {
       this.dietsList = [];
       res.map((diet) => {
         this.dietsList.push({ id: diet.payload.doc.id, data: diet.payload.doc.data() });
+        console.log(diet.payload.doc.data())
       })
     })
   }
@@ -66,7 +64,6 @@ export class DietsComponent implements OnInit {
         this.dietService.addItem('diets', result).then();
       }
     });
-
   }
 
   editDietDialog(dietId: string) {
@@ -88,7 +85,7 @@ export class DietsComponent implements OnInit {
   }
 
   upvoteHandler(dietId: string) {
-    let diet = this.dietsList.find(x => x.id === dietId);
+    let diet = this.dietsList.find(x => x.id === dietId)!;
     if(diet.data.downvoters.includes(this.currentUser)){
       let indexToClear = diet.data.downvoters.indexOf(this.currentUser);
       diet.data.downvoters.splice(indexToClear, 1);
@@ -103,7 +100,7 @@ export class DietsComponent implements OnInit {
     }
   }
   downvoteHandler(dietId: string) {
-    let diet = this.dietsList.find(x => x.id === dietId);
+    let diet = this.dietsList.find(x => x.id === dietId)!;
     if(diet.data.voters.includes(this.currentUser)){
       let indexToClear = diet.data.voters.indexOf(this.currentUser);
       diet.data.voters.splice(indexToClear, 1);
@@ -129,9 +126,9 @@ export class AddDietDialog {
   @ViewChild('dietForm') dietForm!: NgForm;
   public currentUser = localStorage.getItem('userID');
   public currentUserEmail = localStorage.getItem('userEmail');
-  public breakfastMeals: any[] = [];
-  public lunchMeals: any[] = [];
-  public dinnerMeals: any[] = [];
+  public breakfastMeals: string[] = [];
+  public lunchMeals: string[] = [];
+  public dinnerMeals: string[] = [];
   public voters = [];
   public downvoters = [];
   public votes: number = 0;
@@ -200,7 +197,8 @@ export class AddDietDialog {
         break;
     }
   }
-  public dietLevels: DietLevels[] = [
+
+  public dietLevels: IDietLevel[] = [
     { value: 'Beginner', viewValue: 'Rookie' },
     { value: 'Medium', viewValue: 'Fit-Cadet' },
     { value: 'Intermediate', viewValue: 'Fit-Commander' }

@@ -4,10 +4,6 @@ import { FirebaseAuthService } from '../services/firebase-auth.service';
 import { MatDialog, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import Swal from 'sweetalert2/dist/sweetalert2.js';
 import { NgForm } from '@angular/forms';
-interface WorkoutLevels {
-  value: string;
-  viewValue: string;
-}
 
 @Component({
   selector: 'app-workouts',
@@ -16,9 +12,8 @@ interface WorkoutLevels {
 })
 export class WorkoutsComponent implements OnInit {
 
-
   public currentUser = localStorage.getItem('userID');
-  public workoutsList: any[] = [];
+  public workoutsList: IFirebaseCollection[] = [];
   constructor(private workoutService: CRUDService, private fireAuth: FirebaseAuthService, public dialog: MatDialog) { }
 
   ngOnInit(): void {
@@ -28,8 +23,8 @@ export class WorkoutsComponent implements OnInit {
   getWorkouts(): void {
     this.workoutService.getItems('workouts').subscribe((res) => {
       this.workoutsList = [];
-      res.map((diet) => {
-        this.workoutsList.push({ id: diet.payload.doc.id, data: diet.payload.doc.data() });
+      res.map((workout) => {
+        this.workoutsList.push({ id: workout.payload.doc.id, data: workout.payload.doc.data()});
       })
     })
   }
@@ -87,7 +82,7 @@ export class WorkoutsComponent implements OnInit {
   }
 
   upvoteHandler(workoutId: string) {
-    let workout = this.workoutsList.find(x => x.id === workoutId);
+    let workout = this.workoutsList.find(x => x.id === workoutId)!;
     if(workout.data.downvoters.includes(this.currentUser)){
       let indexToClear = workout.data.downvoters.indexOf(this.currentUser);
       workout.data.downvoters.splice(indexToClear, 1);
@@ -103,7 +98,7 @@ export class WorkoutsComponent implements OnInit {
 
   }
   downvoteHandler(workoutId: string) {
-    let workout = this.workoutsList.find(x => x.id === workoutId);
+    let workout = this.workoutsList.find(x => x.id === workoutId)!;
     if(workout.data.voters.includes(this.currentUser)){
       let indexToClear = workout.data.voters.indexOf(this.currentUser);
       workout.data.voters.splice(indexToClear, 1);
@@ -130,15 +125,15 @@ export class AddWorkoutDialog {
   public currentUser = localStorage.getItem('userID');
   public currentUserEmail = localStorage.getItem('userEmail');
 
-  public mondayExercises: any[] = [];
-  public tuesdayExercises: any[] = [];
-  public wednesdayExercises: any[] = [];
-  public thursdayExercises: any[] = [];
-  public fridayExercises: any[] = [];
-  public saturdayExercises: any[] = [];
-  public sundayExercises: any[] = [];
-  public voters = [];
-  public downvoters = [];
+  public mondayExercises: string[] = [];
+  public tuesdayExercises: string[] = [];
+  public wednesdayExercises: string[] = [];
+  public thursdayExercises: string[] = [];
+  public fridayExercises: string[] = [];
+  public saturdayExercises: string[] = [];
+  public sundayExercises: string[] = [];
+  public voters: string[] = [];
+  public downvoters: string[] = [];
   public votes: number = 0;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) { }
 
@@ -241,7 +236,7 @@ export class AddWorkoutDialog {
     }
 
   }
-  public workoutLevels: WorkoutLevels[] = [
+  public workoutLevels: IWorkoutLevel[] = [
     { value: 'Beginner', viewValue: 'Rookie (Beginner)' },
     { value: 'Medium', viewValue: 'Fit-Cadet (Medium)' },
     { value: 'Intermediate', viewValue: 'Fit-Commander (Intermediate)' }
